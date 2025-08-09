@@ -222,10 +222,6 @@ body {
   background: linear-gradient(135deg, #f121a1, #61dafb); /* Inny gradient dla sekcji moda */
 }
 
-.dom-hero {
-  background: linear-gradient(135deg, #00b894, #00cec9); /* Gradient dla sekcji dom */
-}
-
 .filters {
   padding: 40px 20px;
   background-color: #e9ecef;
@@ -287,6 +283,72 @@ body {
   padding: 20px;
   font-size: 18px;
   font-weight: bold;
+}
+
+/* Sport.html specific styles */
+.sport-hero {
+  background: linear-gradient(135deg, #00c853, #00b0ff);
+}
+
+.category-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  padding: 12px 20px;
+  border-top: 1px solid #e5e9ef;
+  border-bottom: 1px solid #e5e9ef;
+}
+
+.category-nav .container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: #1a2236;
+  background: #f4f7f6;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e0e6ec;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.category-nav a:hover {
+  background: #21a1f1;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.feature-list {
+  list-style: none;
+  text-align: left;
+  margin: 0 20px 20px 20px;
+  padding: 0;
+}
+
+.feature-list li {
+  position: relative;
+  padding-left: 28px;
+  margin: 8px 0;
+}
+
+.feature-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00b894;
+  font-weight: bold;
+}
+
+.is-hidden {
+  display: none !important;
 }
 
 /* Responsive adjustments */

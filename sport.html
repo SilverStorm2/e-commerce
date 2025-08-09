@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sport - Modern Style</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="container">
+      <h1 class="shop-name">Modern Style</h1>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="moda.html">Moda</a>
+        <a href="dom.html">Dom</a>
+        <a href="sport.html" class="active">Sport</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero sport-hero">
+    <div class="hero-content">
+      <h2>Sport</h2>
+      <p>Sprzęt i akcesoria dla każdej aktywności — wybierz swoją kategorię.</p>
+      <a href="#sportFilters" class="button-main">Przeglądaj</a>
+    </div>
+  </section>
+
+  <!-- Filtry -->
+  <section class="filters">
+    <form id="sportFilters">
+      <select id="filterCategory" aria-label="Dyscyplina">
+        <option value="">Wszystkie dyscypliny</option>
+        <option value="pilka-nozna">Piłka nożna</option>
+        <option value="bieganie">Bieganie</option>
+        <option value="fitness-silownia">Fitness i siłownia</option>
+        <option value="sporty-zimowe">Sporty zimowe</option>
+        <option value="sporty-wodne">Sporty wodne</option>
+        <option value="turystyka-outdoor">Turystyka i outdoor</option>
+      </select>
+      <select id="filterType" aria-label="Typ produktu">
+        <option value="">Wszystkie typy</option>
+        <option value="pilki">Piłki</option>
+        <option value="korki">Buty korki</option>
+        <option value="stroje">Stroje</option>
+        <option value="ochraniacze">Ochraniacze</option>
+        <option value="buty-bieganie">Buty do biegania</option>
+        <option value="odziez">Odzież sportowa</option>
+        <option value="zegarek-gps">Zegarki GPS</option>
+        <option value="bidon">Bidony</option>
+        <option value="hantle">Hantle</option>
+        <option value="gumy-oporowe">Gumy oporowe</option>
+        <option value="mata">Maty do ćwiczeń</option>
+        <option value="sprzet">Sprzęt treningowy</option>
+        <option value="narty">Narty</option>
+        <option value="snowboard">Snowboard</option>
+        <option value="kask">Kaski</option>
+        <option value="gogle">Gogle</option>
+        <option value="odziez-termiczna">Odzież termiczna</option>
+        <option value="kajak">Kajaki</option>
+        <option value="sup">Deski SUP</option>
+        <option value="pianka">Pianki neoprenowe</option>
+        <option value="kamizelka">Kamizelki ratunkowe</option>
+        <option value="plecak">Plecaki</option>
+        <option value="namiot">Namioty</option>
+        <option value="spiwor">Śpiwory</option>
+        <option value="kijki">Kijki trekkingowe</option>
+      </select>
+      <button class="button-main" type="submit">Filtruj</button>
+      <button class="button-main" type="button" id="resetFilters">Wyczyść</button>
+    </form>
+  </section>
+
+  
+
+  <main class="main-content">
+    <section class="products">
+      <h2>Wybierz dyscyplinę</h2>
+      <div class="product-grid">
+        <!-- Piłka nożna -->
+        <div class="product" id="pilka-nozna" data-category="pilka-nozna" data-tags="pilki,korki,stroje,ochraniacze">
+          <img src="images/sport1-Piłka nożna.jpg" alt="Piłka nożna">
+          <h3>Piłka nożna</h3>
+          <p>Wyposażenie od treningu po mecz — sprawdzone marki i nowości sezonu.</p>
+          <ul class="feature-list">
+            <li>Piłki meczowe i treningowe</li>
+            <li>Buty korki na różne nawierzchnie</li>
+            <li>Stroje drużynowe</li>
+            <li>Ochraniacze i akcesoria</li>
+          </ul>
+          <button class="button-main" type="button">Zobacz więcej</button>
+        </div>
+
+        <!-- Bieganie -->
+        <div class="product" id="bieganie" data-category="bieganie" data-tags="buty-bieganie,odziez,zegarek-gps,bidon">
+          <img src="images/sport2-bieganie.jpg" alt="Bieganie">
+          <h3>Bieganie</h3>
+          <p>Komfort i wsparcie na każdym kilometrze — od startu po finisz.</p>
+          <ul class="feature-list">
+            <li>Buty do biegania</li>
+            <li>Odzież sportowa</li>
+            <li>Zegarki GPS</li>
+            <li>Bidony i pasy nawadniające</li>
+          </ul>
+          <button class="button-main" type="button">Zobacz więcej</button>
+        </div>
+
+        <!-- Fitness i siłownia -->
+        <div class="product" id="fitness-silownia" data-category="fitness-silownia" data-tags="hantle,gumy-oporowe,mata,sprzet">
+          <img src="images/sport3-fitness.jpg" alt="Fitness i siłownia">
+          <h3>Fitness i siłownia</h3>
+          <p>Domowy trening i siłownia — sprzęt, który rośnie wraz z Twoją formą.</p>
+          <ul class="feature-list">
+            <li>Hantle i ketle</li>
+            <li>Gumy oporowe</li>
+            <li>Maty do ćwiczeń</li>
+            <li>Sprzęt treningowy</li>
+          </ul>
+          <button class="button-main" type="button">Zobacz więcej</button>
+        </div>
+
+        <!-- Sporty zimowe -->
+        <div class="product" id="sporty-zimowe" data-category="sporty-zimowe" data-tags="narty,snowboard,kask,gogle,odziez-termiczna">
+          <img src="images/sport4-sportyZimowe.jpg" alt="Sporty zimowe">
+          <h3>Sporty zimowe</h3>
+          <p>Na stok i poza nim — ciepło, bezpieczeństwo i pełna frajda.</p>
+          <ul class="feature-list">
+            <li>Narty i snowboard</li>
+            <li>Kaski i gogle</li>
+            <li>Odzież termiczna</li>
+          </ul>
+          <button class="button-main" type="button">Zobacz więcej</button>
+        </div>
+
+        <!-- Sporty wodne -->
+        <div class="product" id="sporty-wodne" data-category="sporty-wodne" data-tags="kajak,sup,pianka,kamizelka">
+          <img src="images/sport5-sportyWodne.jpg" alt="Sporty wodne">
+          <h3>Sporty wodne</h3>
+          <p>Przygody na wodzie — od jezior po morza, bezpiecznie i stylowo.</p>
+          <ul class="feature-list">
+            <li>Kajaki i akcesoria</li>
+            <li>Deski SUP</li>
+            <li>Pianki neoprenowe</li>
+            <li>Kamizelki ratunkowe</li>
+          </ul>
+          <button class="button-main" type="button">Zobacz więcej</button>
+        </div>
+
+        <!-- Turystyka i outdoor -->
+        <div class="product" id="turystyka-outdoor" data-category="turystyka-outdoor" data-tags="plecak,namiot,spiwor,kijki">
+          <img src="images/sport6-turystyka.jpg" alt="Turystyka i outdoor">
+          <h3>Turystyka i outdoor</h3>
+          <p>Od jednodniowych wypadów po długie trekkingi — sprzęt, na którym polegasz.</p>
+          <ul class="feature-list">
+            <li>Plecaki i systemy noszenia</li>
+            <li>Namioty i tarpy</li>
+            <li>Śpiwory i maty</li>
+            <li>Kijki trekkingowe</li>
+          </ul>
+          <button class="button-main" type="button">Zobacz więcej</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom-bar">
+    <div class="container">
+      <span>2024 &copy; Modern Style</span>
+      <div class="social-icons">
+        <a href="#" title="Facebook" class="icon-link" aria-label="Facebook">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <path d="M18 25V17.5H20.5L21 14.5H18V13C18 12.17 18.17 11.5 19.33 11.5H21V9C20.67 9 19.67 9 18.67 9C16.33 9 15 10.33 15 12.67V14.5H13V17.5H15V25H18Z" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#" title="Instagram" class="icon-link" aria-label="Instagram">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <rect x="10" y="10" width="12" height="12" rx="4" stroke="#fff" stroke-width="2"/>
+            <circle cx="16" cy="16" r="3" stroke="#fff" stroke-width="2"/>
+            <circle cx="21" cy="11" r="1" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#" title="Twitter" class="icon-link" aria-label="Twitter">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <path d="M23 13.5C22.4 13.8 21.8 14 21.1 14.1C21.8 13.7 22.3 13.1 22.5 12.3C21.9 12.7 21.2 13 20.4 13.1C19.8 12.5 18.9 12.5 18.2 13.1C17.5 13.7 17.3 14.7 17.7 15.5C15.9 15.4 14.3 14.6 13.2 13.3C12.8 13.9 13 14.7 13.6 15.1C13.1 15.1 12.7 15 12.3 14.8C12.3 15.5 12.8 16.1 13.5 16.2C13.1 16.3 12.7 16.3 12.3 16.2C12.6 16.8 13.2 17.2 13.9 17.2C13.3 17.7 12.5 17.9 11.7 17.8C12.5 18.3 13.4 18.5 14.3 18.5C18.2 18.5 20.4 15.2 20.4 12.6C20.4 12.5 20.4 12.4 20.4 12.3C21 12 21.6 11.6 22 11.1C21.5 11.3 21 11.5 20.4 11.6C21 11.2 21.5 10.6 21.7 9.9C21.2 10.2 20.6 10.4 20 10.5C19.5 10.1 18.8 10 18.2 10.3C17.6 10.6 17.2 11.2 17.2 11.9C17.2 12.1 17.2 12.3 17.3 12.5C15.7 12.4 14.2 11.7 13.1 10.6C12.7 11.2 12.9 12 13.5 12.4C13.1 12.4 12.7 12.3 12.3 12.1C12.3 12.8 12.8 13.4 13.5 13.5C13.1 13.6 12.7 13.6 12.3 13.5C12.6 14.1 13.2 14.5 13.9 14.5C13.3 15 12.5 15.2 11.7 15.1C12.5 15.6 13.4 15.8 14.3 15.8C18.2 15.8 20.4 12.5 20.4 9.9C20.4 9.8 20.4 9.7 20.4 9.6C21 9.3 21.6 8.9 22 8.4Z" fill="#fff"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+
