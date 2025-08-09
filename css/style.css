@@ -279,6 +279,12 @@ body {
      object-fit: cover;
 }
 
+/* Make kids image focus show the child better */
+.lookbook-item img.lookbook-kids {
+  height: 320px;
+  object-position: center 30%;
+}
+
 .lookbook-item p {
   padding: 20px;
   font-size: 18px;
@@ -350,6 +356,8 @@ body {
 .is-hidden {
   display: none !important;
 }
+
+/* (removed) collapsible styles */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

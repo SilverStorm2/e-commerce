@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial state
   applyFilters();
+
+  // (removed) collapsible feature lists
 });
 
 
