@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dom - Modern Style</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
   <header class="top-bar">
@@ -68,37 +68,37 @@
           <img src="images/dom1salon.jpg" alt="Salon">
           <h3>Salon</h3>
           <p>Wygodna kanapa, stolik kawowy, rośliny w donicach, ciepłe oświetlenie.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('salon', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/dom2bedroom.jpg" alt="Sypialnia">
           <h3>Bedroom</h3>
           <p>Pościel w przytulnych kolorach, miękkie poduszki, lampka nocna.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('sypialnia', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/dom3kitchen.jpg" alt="Kuchnia">
           <h3>Kitchen</h3>
           <p>Stylowe naczynia, garnki, dekoracje kuchenne.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('kuchnia', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/dom4bathroom.jpg" alt="Łazienka">
           <h3>Bathroom</h3>
           <p>Ręczniki, świece zapachowe, eleganckie pojemniki na kosmetyki.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('lazienka', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/dom5living-room.jpg" alt="Pokój dzienny">
           <h3>Living-room</h3>
           <p>Obrazy, plakaty, półki na książki lub bibeloty.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('pokoj-dzienny', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/dom6garden.jpg" alt="Ogród">
           <h3>Garden</h3>
           <p>Meble ogrodowe, lampki, rośliny w donicach.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('ogrod', this)">Zobacz więcej</button>
         </div>
       </div>
     </section>
@@ -146,5 +146,7 @@
       </div>
     </div>
   </footer>
+  
+  <script src="js/script.js?v=6"></script>
 </body>
 </html> 

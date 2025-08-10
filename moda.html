@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moda - Modern Style</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <header class="top-bar">
@@ -63,37 +63,37 @@
           <img src="images/moda1.jpg" alt="Zestaw casual">
           <h3>Zestaw casual</h3>
           <p>Idealny wybór na co dzień – wygoda i styl.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('casual', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/moda2.jpg" alt="Szafa marzeń">
           <h3>Szafa marzeń</h3>
           <p>Inspiracje do stworzenia własnej garderoby.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('szafa', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/moda3.jpg" alt="Eleganckie dodatki">
           <h3>Eleganckie dodatki</h3>
           <p>Buty i torebki, które podkreślą Twój styl.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('dodatki', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/moda4.jpg" alt="Miejski look">
           <h3>Miejski look</h3>
           <p>Stylizacje na spacer po mieście lub spotkanie z przyjaciółmi.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('miejski', this)">Zobacz więcej</button>
         </div>
         <div class="product">
           <img src="images/moda5.jpg" alt="Modne akcesoria">
           <h3>Modne akcesoria</h3>
           <p>Okulary i dodatki, które dopełnią każdą stylizację.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('akcesoria', this)">Zobacz więcej</button>
         </div>
         <div class="product">
-          <img src="images/moda6.jpg" alt="Perfumy i kosmetyki">
+          <img src="images/moda4.jpg" alt="Perfumy i kosmetyki">
           <h3>Perfumy i kosmetyki</h3>
           <p>Wyjątkowe zapachy i pielęgnacja na każdą okazję.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('perfumy', this)">Zobacz więcej</button>
         </div>
       </div>
     </section>
@@ -141,5 +141,7 @@
       </div>
     </div>
   </footer>
+  
+  <script src="js/script.js?v=4"></script>
 </body>
 </html> 

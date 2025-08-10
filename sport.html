@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sport - Modern Style</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <header class="top-bar">
@@ -86,13 +86,7 @@
           <img src="images/sport1-Piłka nożna.jpg" alt="Piłka nożna">
           <h3>Piłka nożna</h3>
           <p>Wyposażenie od treningu po mecz — sprawdzone marki i nowości sezonu.</p>
-          <ul class="feature-list">
-            <li>Piłki meczowe i treningowe</li>
-            <li>Buty korki na różne nawierzchnie</li>
-            <li>Stroje drużynowe</li>
-            <li>Ochraniacze i akcesoria</li>
-          </ul>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('pilka-nozna', this)">Zobacz więcej</button>
         </div>
 
         <!-- Bieganie -->
@@ -100,13 +94,7 @@
           <img src="images/sport2-bieganie.jpg" alt="Bieganie">
           <h3>Bieganie</h3>
           <p>Komfort i wsparcie na każdym kilometrze — od startu po finisz.</p>
-          <ul class="feature-list">
-            <li>Buty do biegania</li>
-            <li>Odzież sportowa</li>
-            <li>Zegarki GPS</li>
-            <li>Bidony i pasy nawadniające</li>
-          </ul>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('bieganie', this)">Zobacz więcej</button>
         </div>
 
         <!-- Fitness i siłownia -->
@@ -114,13 +102,7 @@
           <img src="images/sport3-fitness.jpg" alt="Fitness i siłownia">
           <h3>Fitness i siłownia</h3>
           <p>Domowy trening i siłownia — sprzęt, który rośnie wraz z Twoją formą.</p>
-          <ul class="feature-list">
-            <li>Hantle i ketle</li>
-            <li>Gumy oporowe</li>
-            <li>Maty do ćwiczeń</li>
-            <li>Sprzęt treningowy</li>
-          </ul>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('fitness-silownia', this)">Zobacz więcej</button>
         </div>
 
         <!-- Sporty zimowe -->
@@ -128,13 +110,7 @@
           <img src="images/sport4-sportyZimowe.jpg" alt="Sporty zimowe">
           <h3>Sporty zimowe</h3>
           <p>Na stok i poza nim — ciepło, bezpieczeństwo i pełna frajda.</p>
-          <ul class="feature-list">
-            <li>Narty i snowboard</li>
-            <li>Kaski i gogle</li>
-            <li>Odzież termiczna</li>
-            <li>Akcesoria</li>
-          </ul>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('sporty-zimowe', this)">Zobacz więcej</button>
         </div>
 
         <!-- Sporty wodne -->
@@ -142,13 +118,7 @@
           <img src="images/sport5-sportyWodne.jpg" alt="Sporty wodne">
           <h3>Sporty wodne</h3>
           <p>Przygody na wodzie — od jezior po morza, bezpiecznie i stylowo.</p>
-          <ul class="feature-list">
-            <li>Kajaki i akcesoria</li>
-            <li>Deski SUP</li>
-            <li>Pianki neoprenowe</li>
-            <li>Kamizelki ratunkowe</li>
-          </ul>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('sporty-wodne', this)">Zobacz więcej</button>
         </div>
 
         <!-- Turystyka i outdoor -->
@@ -156,13 +126,7 @@
           <img src="images/sport6-turystyka.jpg" alt="Turystyka i outdoor">
           <h3>Turystyka i outdoor</h3>
           <p>Od jednodniowych wypadów po długie trekkingi — sprzęt, na którym polegasz.</p>
-          <ul class="feature-list">
-            <li>Plecaki i systemy noszenia</li>
-            <li>Namioty i tarpy</li>
-            <li>Śpiwory i maty</li>
-            <li>Kijki trekkingowe</li>
-          </ul>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('turystyka-outdoor', this)">Zobacz więcej</button>
         </div>
       </div>
     </section>
@@ -210,6 +174,7 @@
       </div>
     </div>
   </footer>
+  <script src="js/script.js?v=5"></script>
 </body>
 </html>
 
