@@ -126,6 +126,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  justify-items: center;
 }
 
 .product {
@@ -222,6 +223,11 @@ body {
   background: linear-gradient(135deg, #f121a1, #61dafb); /* Inny gradient dla sekcji moda */
 }
 
+/* Elektronika.html specific styles */
+.elektronika-hero {
+  background: linear-gradient(135deg, #636e72, #2d3436); /* Gradient dla sekcji elektronika */
+}
+
 .filters {
   padding: 40px 20px;
   background-color: #e9ecef;
@@ -279,85 +285,37 @@ body {
      object-fit: cover;
 }
 
-/* Make kids image focus show the child better */
-.lookbook-item img.lookbook-kids {
-  height: 320px;
-  object-position: center 30%;
-}
-
 .lookbook-item p {
   padding: 20px;
   font-size: 18px;
   font-weight: bold;
 }
 
-/* Sport.html specific styles */
-.sport-hero {
-  background: linear-gradient(135deg, #00c853, #00b0ff);
-}
-
-.category-nav {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  background: #ffffffcc;
-  backdrop-filter: blur(6px);
-  padding: 12px 20px;
-  border-top: 1px solid #e5e9ef;
-  border-bottom: 1px solid #e5e9ef;
-}
-
-.category-nav .container {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.category-nav a {
-  text-decoration: none;
-  color: #1a2236;
-  background: #f4f7f6;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid #e0e6ec;
-  font-weight: 600;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.category-nav a:hover {
-  background: #21a1f1;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
+/* Style dla list z zielonymi znacznikami */
 .feature-list {
   list-style: none;
-  text-align: left;
-  margin: 0 20px 20px 20px;
   padding: 0;
+  margin: 20px 0;
+  text-align: left;
 }
 
 .feature-list li {
   position: relative;
-  padding-left: 28px;
-  margin: 8px 0;
+  padding-left: 35px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
 }
 
 .feature-list li::before {
-  content: "✔";
+  content: "✓";
   position: absolute;
-  left: 0;
+  left: 5mm;
   top: 0;
   color: #00b894;
   font-weight: bold;
+  font-size: 16px;
 }
-
-.is-hidden {
-  display: none !important;
-}
-
-/* (removed) collapsible styles */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

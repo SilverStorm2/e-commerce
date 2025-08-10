@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moda - Modern Style</title>
+  <title>Elektronika - Modern Style</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,20 +12,20 @@
       <h1 class="shop-name">Modern Style</h1>
       <nav class="main-nav">
         <a href="index.html">Home</a>
-        <a href="moda.html" class="active">Moda</a>
+        <a href="moda.html">Moda</a>
         <a href="dom.html">Dom</a>
         <a href="sport.html">Sport</a>
-        <a href="elektronika.html">Elektronika</a>
+        <a href="elektronika.html" class="active">Elektronika</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero sekcja -->
-  <section class="hero moda-hero">
+  <section class="hero elektronika-hero">
     <div class="hero-content">
-      <h2>Moda</h2>
-      <p>Odkryj najnowsze trendy i zainspiruj się naszymi propozycjami!</p>
+      <h2>Elektronika</h2>
+      <p>Najnowsze technologie i innowacyjne rozwiązania dla Twojego cyfrowego świata!</p>
     </div>
   </section>
 
@@ -34,21 +34,28 @@
     <form>
       <select>
         <option>Wszystkie kategorie</option>
-        <option>Ubrania</option>
-        <option>Dodatki</option>
-        <option>Obuwie</option>
+        <option>Komputery i laptopy</option>
+        <option>Smartfony i akcesoria</option>
+        <option>Sprzęt audio</option>
+        <option>Telewizory i wideo</option>
+        <option>Gaming</option>
+        <option>Smart Home</option>
       </select>
       <select>
-        <option>Rozmiar</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
+        <option>Marka</option>
+        <option>Apple</option>
+        <option>Samsung</option>
+        <option>Sony</option>
+        <option>LG</option>
+        <option>Dell</option>
+        <option>HP</option>
       </select>
       <select>
-        <option>Kolor</option>
-        <option>Czarny</option>
-        <option>Biały</option>
-        <option>Kolorowy</option>
+        <option>Cena</option>
+        <option>Do 1000 zł</option>
+        <option>1000-3000 zł</option>
+        <option>3000-5000 zł</option>
+        <option>Powyżej 5000 zł</option>
       </select>
       <button class="button-main" type="submit">Filtruj</button>
     </form>
@@ -57,42 +64,53 @@
   <!-- Siatka produktów -->
   <main class="main-content">
     <section class="products">
-      <h2>Nasze stylizacje</h2>
+      <h2>Wybierz kategorię</h2>
       <div class="product-grid">
+        <!-- Komputery i laptopy -->
         <div class="product">
-          <img src="images/moda1.jpg" alt="Zestaw casual">
-          <h3>Zestaw casual</h3>
-          <p>Idealny wybór na co dzień – wygoda i styl.</p>
+          <img src="images/elek1_komp.jpg" alt="Komputery i laptopy">
+          <h3>Komputery i laptopy</h3>
+          <p>Profesjonalne rozwiązania dla pracy i rozrywki — od notebooków po stacje robocze.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
+
+        <!-- Smartfony i akcesoria -->
         <div class="product">
-          <img src="images/moda2.jpg" alt="Szafa marzeń">
-          <h3>Szafa marzeń</h3>
-          <p>Inspiracje do stworzenia własnej garderoby.</p>
+          <img src="images/elek2_smartfon.jpg" alt="Smartfony i akcesoria">
+          <h3>Smartfony i akcesoria</h3>
+          <p>Najnowsze modele telefonów i niezbędne akcesoria dla Twojego urządzenia.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
+
+        <!-- Sprzęt audio -->
         <div class="product">
-          <img src="images/moda3.jpg" alt="Eleganckie dodatki">
-          <h3>Eleganckie dodatki</h3>
-          <p>Buty i torebki, które podkreślą Twój styl.</p>
+          <img src="images/elek3_audio.jpg" alt="Sprzęt audio">
+          <h3>Sprzęt audio</h3>
+          <p>Najwyższej jakości dźwięk dla domowego kina i słuchania muzyki.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
+
+        <!-- Telewizory i wideo -->
         <div class="product">
-          <img src="images/moda4.jpg" alt="Miejski look">
-          <h3>Miejski look</h3>
-          <p>Stylizacje na spacer po mieście lub spotkanie z przyjaciółmi.</p>
+          <img src="images/elek4_tv.jpg" alt="Telewizory i wideo">
+          <h3>Telewizory i wideo</h3>
+          <p>Immersyjne doświadczenia wizualne z najnowszymi technologiami wyświetlania.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
+
+        <!-- Gaming -->
         <div class="product">
-          <img src="images/moda5.jpg" alt="Modne akcesoria">
-          <h3>Modne akcesoria</h3>
-          <p>Okulary i dodatki, które dopełnią każdą stylizację.</p>
+          <img src="images/elek5_gaming.jpg" alt="Gaming">
+          <h3>Gaming</h3>
+          <p>Profesjonalny sprzęt gamingowy dla graczy na każdym poziomie.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
+
+        <!-- Smart Home -->
         <div class="product">
-          <img src="images/moda6.jpg" alt="Perfumy i kosmetyki">
-          <h3>Perfumy i kosmetyki</h3>
-          <p>Wyjątkowe zapachy i pielęgnacja na każdą okazję.</p>
+          <img src="images/elek6_home.jpg" alt="Smart Home">
+          <h3>Smart Home</h3>
+          <p>Inteligentne rozwiązania dla nowoczesnego domu przyszłości.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
       </div>
@@ -104,19 +122,19 @@
     <h2>Zainspiruj się!</h2>
     <div class="lookbook-grid">
       <div class="lookbook-item">
-        <img src="images/2-moda.jpg" alt="Lookbook 1">
-        <p>Energetyczny look na lato</p>
+        <img src="images/1-electronics.jpg" alt="Inspiracje elektroniczne 1">
+        <p>Nowoczesne biuro z najnowszym sprzętem</p>
       </div>
       <div class="lookbook-item">
-        <img src="images/6-friend.jpg" alt="Lookbook 2">
-        <p>Styl na miasto</p>
+        <img src="images/elek7_smart-home.jpg" alt="Inspiracje elektroniczne 2">
+        <p>Inteligentny dom przyszłości</p>
       </div>
     </div>
   </section>
 
   <footer class="bottom-bar">
     <div class="container">
-      <span>2024 &copy; Modern Style</span>
+      <span>2025 &copy; Modern Style</span>
       <div class="social-icons">
         <a href="#" title="Facebook" class="icon-link" aria-label="Facebook">
           <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
@@ -142,4 +160,4 @@
     </div>
   </footer>
 </body>
-</html> 
+</html>
