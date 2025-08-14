@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modern Style - Sklep internetowy</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <!-- Górna stopka -->
@@ -21,6 +22,13 @@
         <a href="#jak-to-dziala">Jak to działa</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
+      <div class="koszyk-icon">
+        <button class="koszyk-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="koszyk-licznik">0</span>
+          <span class="koszyk-backup">🛒</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -65,37 +73,37 @@
     <section class="products" id="oferta">
       <h2>Nasze produkty</h2>
       <div class="product-grid">
-        <div class="product">
+        <div class="product" data-category="komputery">
           <img src="images/1-electronics.jpg" alt="Elektronika">
           <h3>Elektronika</h3>
           <p>Nowoczesny sprzęt elektroniczny do Twojego domu.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
-        <div class="product">
+        <div class="product" data-category="casual">
           <img src="images/2-moda.jpg" alt="Moda">
           <h3>Moda</h3>
           <p>Stylowe ubrania i dodatki na każdą okazję.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
-        <div class="product">
+        <div class="product" data-category="salon">
           <img src="images/3-home.jpg" alt="Dom">
           <h3>Dom</h3>
           <p>Wyposażenie i dekoracje do Twojego mieszkania.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
-        <div class="product">
+        <div class="product" data-category="pilka-nozna">
           <img src="images/4-sports.jpg" alt="Sport">
           <h3>Sport</h3>
           <p>Sprzęt i akcesoria sportowe dla aktywnych.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
-        <div class="product">
+        <div class="product" data-category="akcesoria">
           <img src="images/5-face.jpg" alt="Uroda">
           <h3>Uroda</h3>
           <p>Kosmetyki i produkty do pielęgnacji.</p>
           <button class="button-main" type="button">Zobacz więcej</button>
         </div>
-        <div class="product">
+        <div class="product" data-category="casual">
           <img src="images/6-friend.jpg" alt="Stylowa przygoda z przyjaciółmi">
           <h3>Stylowa przygoda z przyjaciółmi</h3>
           <p>Wyjątkowe stylizacje na wspólne wyjścia, które podkreślą Twój charakter i energię!</p>
@@ -151,6 +159,6 @@
       </div>
     </div>
   </footer>
-  <script src="js/script.js"></script>
+      <script type="module" src="js/script.js"></script>
 </body>
 </html>
