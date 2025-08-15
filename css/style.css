@@ -1019,6 +1019,118 @@ body {
     opacity: 1;
   }
 }
+/* Style dla sekcji elektronika */
+.elektronika-hero {
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #0f4c75);
+  position: relative;
+  overflow: hidden;
+}
+
+.elektronika-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(173, 216, 230, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.elektronika-hero .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.elektronika-hero .button-main {
+  background: linear-gradient(90deg, #00bfff, #1e90ff, #4169e1);
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.elektronika-hero .button-main:hover {
+  background: linear-gradient(90deg, #1e90ff, #4169e1, #0000cd);
+  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Style dla przycisków elektroniki */
+body.elektronika-page .button-main {
+  background: linear-gradient(90deg, #00bfff, #1e90ff);
+  border: 1px solid rgba(30, 144, 255, 0.3);
+}
+
+body.elektronika-page .button-main:hover {
+  background: linear-gradient(90deg, #1e90ff, #4169e1);
+  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
+}
+
+/* Style dla produktów elektroniki */
+body.elektronika-page .product {
+  border: 1px solid rgba(30, 144, 255, 0.2);
+  background: linear-gradient(145deg, #ffffff, #f8fbff);
+}
+
+body.elektronika-page .product:hover {
+  border-color: rgba(30, 144, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(30, 144, 255, 0.15);
+}
+
+body.elektronika-page .product h3 {
+  color: #1e3c72;
+}
+
+/* Style dla filtrów elektroniki */
+body.elektronika-page .filters {
+  background: linear-gradient(135deg, #f8fbff, #e6f3ff);
+  border: 1px solid rgba(30, 144, 255, 0.2);
+}
+
+body.elektronika-page .filters select,
+body.elektronika-page .filters input {
+  border: 1px solid rgba(30, 144, 255, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.elektronika-page .filters select:focus,
+body.elektronika-page .filters input:focus {
+  border-color: #1e90ff;
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+}
+
+/* Style dla menu produktów elektroniki */
+body.elektronika-page .menu-produktow {
+  background: linear-gradient(145deg, #ffffff, #f0f8ff);
+  border: 2px solid rgba(30, 144, 255, 0.3);
+}
+
+body.elektronika-page .menu-produktow h3 {
+  color: #1e3c72;
+  background: linear-gradient(90deg, #e6f3ff, #f0f8ff);
+  border-bottom: 2px solid rgba(30, 144, 255, 0.2);
+}
+
+body.elektronika-page .produkt-w-menu {
+  border-bottom: 1px solid rgba(30, 144, 255, 0.1);
+}
+
+body.elektronika-page .produkt-w-menu:hover {
+  background: linear-gradient(145deg, #f8fbff, #e6f3ff);
+}
+
+body.elektronika-page .dodaj-do-koszyka {
+  background: linear-gradient(90deg, #00bfff, #1e90ff);
+  border: 1px solid rgba(30, 144, 255, 0.3);
+}
+
+body.elektronika-page .dodaj-do-koszyka:hover {
+  background: linear-gradient(90deg, #1e90ff, #4169e1);
+  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
+}
+
 /* Responsive dla koszyka i menu */
 @media (max-width: 768px) {
   .koszyk-produkt {
