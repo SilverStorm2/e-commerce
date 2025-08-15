@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylowa Przygoda - Modern Style</title>
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="container">
+      <h1 class="shop-name">Modern Style</h1>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="moda.html">Moda</a>
+        <a href="dom.html">Dom</a>
+        <a href="sport.html">Sport</a>
+        <a href="elektronika.html">Elektronika</a>
+        <a href="uroda.html">Uroda</a>
+        <a href="stylowa-przygoda.html" class="active">Stylowa Przygoda</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <div class="koszyk-icon">
+        <button class="koszyk-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="koszyk-licznik">0</span>
+          <span class="koszyk-backup">🛒</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero sekcja -->
+  <section class="hero stylowa-przygoda-hero">
+    <div class="hero-content">
+      <h2>Stylowa Przygoda z Przyjaciółmi</h2>
+      <p>Wyjątkowe stylizacje na wspólne wyjścia, które podkreślą Twój charakter i energię!</p>
+    </div>
+  </section>
+
+  <!-- Filtry -->
+  <section class="filters">
+    <form>
+      <select>
+        <option>Wszystkie kategorie</option>
+        <option>Party</option>
+        <option>Festiwal</option>
+        <option>Casual</option>
+        <option>Akcesoria</option>
+      </select>
+      <select>
+        <option>Okazja</option>
+        <option>Impreza</option>
+        <option>Koncert</option>
+        <option>Spotkanie</option>
+        <option>Wyjście miejskie</option>
+      </select>
+      <select>
+        <option>Styl</option>
+        <option>Kolorowy</option>
+        <option>Elegancki</option>
+        <option>Casualowy</option>
+        <option>Retro</option>
+      </select>
+      <button class="button-main" type="submit">Filtruj</button>
+    </form>
+  </section>
+
+  <!-- Siatka produktów -->
+  <main class="main-content">
+    <section class="products">
+      <h2>Nasze stylizacje na przygody</h2>
+      <div class="product-grid">
+        <div class="product">
+          <img src="images/stylowa-przyg-fashion-6203956_1280.jpg" alt="Zestaw party">
+          <h3>Zestaw party</h3>
+          <p>Kompletny zestaw na wieczorne wyjścia z przyjaciółmi.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('zestaw-party', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/stylowa-przyg-girl-2581913_1280.jpg" alt="Kurtka jeansowa">
+          <h3>Kurtka jeansowa oversize</h3>
+          <p>Modna kurtka jeansowa na casualowe spotkania.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('kurtka-jeansowa', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/stylowa-przyg-vintage-635244_1280.jpg" alt="Sneakersy limitowane">
+          <h3>Sneakersy limitowane</h3>
+          <p>Wyjątkowe sneakersy na stylowe przygody miejskie.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('sneakersy', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/stylowa-przyg-woman-600225_1280.jpg" alt="Zestaw festiwalowy">
+          <h3>Zestaw festiwalowy</h3>
+          <p>Kolorowy zestaw na festiwale i koncerty z przyjaciółmi.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('zestaw-festiwalowy', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/stylowa-przyg-fashion-6203956_1280.jpg" alt="Torebka crossbody">
+          <h3>Torebka crossbody</h3>
+          <p>Praktyczna torebka na ramię do aktywnych dni z przyjaciółmi.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('torebka-crossbody', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/stylowa-przyg-girl-2581913_1280.jpg" alt="Okulary retro">
+          <h3>Okulary przeciwsłoneczne retro</h3>
+          <p>Stylowe okulary w stylu retro na letnie przygody.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('okulary-retro', this)">Zobacz więcej</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Inspiracje/Lookbook -->
+  <section class="lookbook">
+    <h2>Stylowe inspiracje na przygody</h2>
+    <div class="lookbook-grid">
+      <div class="lookbook-item">
+        <img src="images/stylowa-przyg-fashion-6203956_1280.jpg" alt="Party Look">
+        <p>Elegancki look na wieczorne imprezy</p>
+      </div>
+      <div class="lookbook-item">
+        <img src="images/stylowa-przyg-girl-2581913_1280.jpg" alt="Casual Style">
+        <p>Casualowy styl na spotkania z przyjaciółmi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekcja o stylowej przygodzie -->
+  <section class="about-adventure">
+    <div class="container">
+      <h2>Przygoda zaczyna się od stylu</h2>
+      <p>W Modern Style wierzymy, że najlepsze przygody dzieją się wtedy, gdy czujesz się pewnie i stylowo. Nasze kolekcje zostały stworzone z myślą o aktywnych osobach, które cenią sobie wygodę, ale nie rezygnują z dobrego stylu.</p>
+      
+      <div class="adventure-features">
+        <div class="feature">
+          <i class="fas fa-users"></i>
+          <h3>Stylizacje grupowe</h3>
+          <p>Zestawy idealne na wspólne wyjścia z przyjaciółmi</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-music"></i>
+          <h3>Festiwale i koncerty</h3>
+          <p>Kolorowe i wygodne ubrania na muzyczne wydarzenia</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-city"></i>
+          <h3>Miejskie przygody</h3>
+          <p>Funkcjonalne stylizacje na odkrywanie miasta</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-camera"></i>
+          <h3>Instagram ready</h3>
+          <p>Stylizacje idealne na pamiątkowe zdjęcia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekcja planowania przygód -->
+  <section class="plan-adventure">
+    <div class="container">
+      <h2>Zaplanuj swoją stylową przygodę</h2>
+      <div class="adventure-types">
+        <div class="adventure-type">
+          <img src="images/stylowa-przyg-fashion-6203956_1280.jpg" alt="Party Night">
+          <h3>Wieczorna impreza</h3>
+          <p>Eleganckie zestawy na kluby, bary i restauracje</p>
+          <ul>
+            <li>Sukienka + Dodatki</li>
+            <li>Wysokie obcasy</li>
+            <li>Statement biżuteria</li>
+          </ul>
+        </div>
+        <div class="adventure-type">
+          <img src="images/stylowa-przyg-vintage-635244_1280.jpg" alt="Festival Fun">
+          <h3>Festiwal muzyczny</h3>
+          <p>Kolorowe i wygodne stylizacje na długie dni</p>
+          <ul>
+            <li>Wygodne sneakersy</li>
+            <li>Crossbody bag</li>
+            <li>Okulary przeciwsłoneczne</li>
+          </ul>
+        </div>
+        <div class="adventure-type">
+          <img src="images/stylowa-przyg-girl-2581913_1280.jpg" alt="City Exploration">
+          <h3>Zwiedzanie miasta</h3>
+          <p>Casualowe outfity na aktywne dni</p>
+          <ul>
+            <li>Kurtka jeansowa</li>
+            <li>Wygodne buty</li>
+            <li>Praktyczna torebka</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bottom-bar">
+    <div class="container">
+      <span>2025 &copy; Modern Style</span>
+      <div class="social-icons">
+        <a href="#" title="Facebook" class="icon-link" aria-label="Facebook">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <path d="M18 25V17.5H20.5L21 14.5H18V13C18 12.17 18.17 11.5 19.33 11.5H21V9C20.67 9 19.67 9 18.67 9C16.33 9 15 10.33 15 12.67V14.5H13V17.5H15V25H18Z" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#" title="Instagram" class="icon-link" aria-label="Instagram">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <rect x="10" y="10" width="12" height="12" rx="4" stroke="#fff" stroke-width="2"/>
+            <circle cx="16" cy="16" r="3" stroke="#fff" stroke-width="2"/>
+            <circle cx="21" cy="11" r="1" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#" title="Twitter" class="icon-link" aria-label="Twitter">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <path d="M23 13.5C22.4 13.8 21.8 14 21.1 14.1C21.8 13.7 22.3 13.1 22.5 12.3C21.9 12.7 21.2 13 20.4 13.1C19.8 12.5 18.9 12.5 18.2 13.1C17.5 13.7 17.3 14.7 17.7 15.5C15.9 15.4 14.3 14.6 13.2 13.3C12.8 13.9 13 14.7 13.6 15.1C13.1 15.1 12.7 15 12.3 14.8C12.3 15.5 12.8 16.1 13.5 16.2C13.1 16.3 12.7 16.3 12.3 16.2C12.6 16.8 13.2 17.2 13.9 17.2C13.3 17.7 12.5 17.9 11.7 17.8C12.5 18.3 13.4 18.5 14.3 18.5C18.2 18.5 20.4 15.2 20.4 12.6C20.4 12.5 20.4 12.4 20.4 12.3C21 12 21.6 11.6 22 11.1C21.5 11.3 21 11.5 20.4 11.6C21 11.2 21.5 10.6 21.7 9.9C21.2 10.2 20.6 10.4 20 10.5C19.5 10.1 18.8 10 18.2 10.3C17.6 10.6 17.2 11.2 17.2 11.9C17.2 12.1 17.2 12.3 17.3 12.5C15.7 12.4 14.2 11.7 13.1 10.6C12.7 11.2 12.9 12 13.5 12.4C13.1 12.4 12.7 12.3 12.3 12.1C12.3 12.8 12.8 13.4 13.5 13.5C13.1 13.6 12.7 13.6 12.3 13.5C12.6 14.1 13.2 14.5 13.9 14.5C13.3 15 12.5 15.2 11.7 15.1C12.5 15.6 13.4 15.8 14.3 15.8C18.2 15.8 20.4 12.5 20.4 9.9C20.4 9.8 20.4 9.7 20.4 9.6C21 9.3 21.6 8.9 22 8.4Z" fill="#fff"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/products/stylowa-przygoda.js"></script>
+  <script>
+    // Integruj dane stylowej przygody z głównym skryptem
+    if (typeof stylowaPrzygoda !== 'undefined') {
+      window.produktyStylowejPrzygody = stylowaPrzygoda;
+    }
+  </script>
+  <script src="js/script.js?v=5"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moda - Modern Style</title>
+  <title>Uroda - Modern Style</title>
   <link rel="stylesheet" href="css/style.css?v=4">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -13,11 +13,11 @@
       <h1 class="shop-name">Modern Style</h1>
       <nav class="main-nav">
         <a href="index.html">Home</a>
-        <a href="moda.html" class="active">Moda</a>
+        <a href="moda.html">Moda</a>
         <a href="dom.html">Dom</a>
         <a href="sport.html">Sport</a>
         <a href="elektronika.html">Elektronika</a>
-        <a href="uroda.html">Uroda</a>
+        <a href="uroda.html" class="active">Uroda</a>
         <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
@@ -32,10 +32,10 @@
   </header>
 
   <!-- Hero sekcja -->
-  <section class="hero moda-hero">
+  <section class="hero uroda-hero">
     <div class="hero-content">
-      <h2>Moda</h2>
-      <p>Odkryj najnowsze trendy i zainspiruj się naszymi propozycjami!</p>
+      <h2>Uroda</h2>
+      <p>Odkryj świat piękna i pielęgnacji – produkty, które podkreślą Twoją naturalną urodę!</p>
     </div>
   </section>
 
@@ -44,21 +44,23 @@
     <form>
       <select>
         <option>Wszystkie kategorie</option>
-        <option>Ubrania</option>
-        <option>Dodatki</option>
-        <option>Obuwie</option>
+        <option>Perfumy</option>
+        <option>Kosmetyki</option>
+        <option>Pielęgnacja</option>
+        <option>Włosy</option>
       </select>
       <select>
-        <option>Rozmiar</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
+        <option>Typ skóry</option>
+        <option>Normalna</option>
+        <option>Sucha</option>
+        <option>Tłusta</option>
+        <option>Mieszana</option>
       </select>
       <select>
-        <option>Kolor</option>
-        <option>Czarny</option>
-        <option>Biały</option>
-        <option>Kolorowy</option>
+        <option>Marka</option>
+        <option>Premium</option>
+        <option>Naturalna</option>
+        <option>Wegańska</option>
       </select>
       <button class="button-main" type="submit">Filtruj</button>
     </form>
@@ -67,43 +69,43 @@
   <!-- Siatka produktów -->
   <main class="main-content">
     <section class="products">
-      <h2>Nasze stylizacje</h2>
+      <h2>Nasze produkty urody</h2>
       <div class="product-grid">
         <div class="product">
-          <img src="images/moda1.jpg" alt="Zestaw casual">
-          <h3>Zestaw casual</h3>
-          <p>Idealny wybór na co dzień – wygoda i styl.</p>
-          <button class="button-main" type="button" onclick="pokazMenu('casual', this)">Zobacz więcej</button>
-        </div>
-        <div class="product">
-          <img src="images/moda2.jpg" alt="Szafa marzeń">
-          <h3>Szafa marzeń</h3>
-          <p>Inspiracje do stworzenia własnej garderoby.</p>
-          <button class="button-main" type="button" onclick="pokazMenu('szafa', this)">Zobacz więcej</button>
-        </div>
-        <div class="product">
-          <img src="images/moda3.jpg" alt="Eleganckie dodatki">
-          <h3>Eleganckie dodatki</h3>
-          <p>Buty i torebki, które podkreślą Twój styl.</p>
-          <button class="button-main" type="button" onclick="pokazMenu('dodatki', this)">Zobacz więcej</button>
-        </div>
-        <div class="product">
-          <img src="images/moda4.jpg" alt="Miejski look">
-          <h3>Miejski look</h3>
-          <p>Stylizacje na spacer po mieście lub spotkanie z przyjaciółmi.</p>
-          <button class="button-main" type="button" onclick="pokazMenu('miejski', this)">Zobacz więcej</button>
-        </div>
-        <div class="product">
-          <img src="images/moda5.jpg" alt="Modne akcesoria">
-          <h3>Modne akcesoria</h3>
-          <p>Okulary i dodatki, które dopełnią każdą stylizację.</p>
-          <button class="button-main" type="button" onclick="pokazMenu('akcesoria', this)">Zobacz więcej</button>
-        </div>
-        <div class="product">
-          <img src="images/moda6.jpg" alt="Perfumy i kosmetyki">
-          <h3>Perfumy i kosmetyki</h3>
-          <p>Wyjątkowe zapachy i pielęgnacja na każdą okazję.</p>
+          <img src="images/uroda-perfume-2574073_1280.jpg" alt="Perfumy i zapachy">
+          <h3>Perfumy i zapachy</h3>
+          <p>Wyjątkowe kompozycje zapachowe na każdą okazję.</p>
           <button class="button-main" type="button" onclick="pokazMenu('perfumy', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/moda-cream-302739_1280.jpg" alt="Kosmetyki pielęgnacyjne">
+          <h3>Kosmetyki pielęgnacyjne</h3>
+          <p>Profesjonalna pielęgnacja dla Twojej skóry.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('kosmetyki-pielegnacyjne', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/5-face.jpg" alt="Pielęgnacja twarzy">
+          <h3>Pielęgnacja twarzy</h3>
+          <p>Kremy i serum dla zdrowej i promiennej skóry.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('pielegnacja-twarzy', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/moda-botanical-3605609_1280.jpg" alt="Pielęgnacja włosów">
+          <h3>Pielęgnacja włosów</h3>
+          <p>Szampony, odżywki i maski dla pięknych włosów.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('pielegnacja-wlosow', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/uroda-perfume-2574073_1280.jpg" alt="Perfumy damskie">
+          <h3>Perfumy damskie</h3>
+          <p>Eleganckie zapachy dla kobiet o wyjątkowym stylu.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('perfumy-damskie', this)">Zobacz więcej</button>
+        </div>
+        <div class="product">
+          <img src="images/moda-lipstick-4743984_1280.jpg" alt="Kosmetyki naturalne">
+          <h3>Kosmetyki naturalne</h3>
+          <p>Ekologiczne produkty bez szkodliwych składników.</p>
+          <button class="button-main" type="button" onclick="pokazMenu('kosmetyki-naturalne', this)">Zobacz więcej</button>
         </div>
       </div>
     </section>
@@ -111,38 +113,53 @@
 
   <!-- Inspiracje/Lookbook -->
   <section class="lookbook">
-    <h2>Zainspiruj się!</h2>
+    <h2>Inspiracje urody</h2>
     <div class="lookbook-grid">
       <div class="lookbook-item">
-        <img src="images/2-moda.jpg" alt="Lookbook 1">
-        <p>Energetyczny look na lato</p>
+        <img src="images/uroda-beauty-6837031_1280.jpg" alt="Letnia pielęgnacja">
+        <p>Letnia rutyna pielęgnacyjna</p>
       </div>
       <div class="lookbook-item">
-        <img src="images/6-friend.jpg" alt="Lookbook 2">
-        <p>Styl na miasto</p>
+        <img src="images/uroda-perfume-2574073_1280.jpg" alt="Perfumy na wieczór">
+        <p>Wieczorne kompozycje zapachowe</p>
       </div>
-      <div class="lookbook-item">
-        <img src="images/moda-botanical-3605609_1280.jpg" alt="Lookbook 3">
-        <p>Naturalna pielęgnacja botaniczna</p>
-      </div>
-      <div class="lookbook-item">
-        <img src="images/moda-cream-302739_1280.jpg" alt="Lookbook 4">
-        <p>Delikatne kremy pielęgnacyjne</p>
-      </div>
-      <div class="lookbook-item">
-        <img src="images/moda-lipstick-4743984_1280.jpg" alt="Lookbook 5">
-        <p>Kolorowe szminki na każdą okazję</p>
-      </div>
-      <div class="lookbook-item">
-        <img src="images/moda-manicure-870857_1280.jpg" alt="Lookbook 6">
-        <p>Profesjonalny manicure w domu</p>
+    </div>
+  </section>
+
+  <!-- Sekcja o urodzie -->
+  <section class="about-beauty">
+    <div class="container">
+      <h2>Piękno to nie tylko wygląd</h2>
+      <p>W Modern Style wierzymy, że prawdziwe piękno płynie z wnętrza. Nasze produkty urody zostały starannie dobrane, aby nie tylko podkreślić Twoją naturalną urodę, ale także zapewnić komfort i pewność siebie na każdy dzień.</p>
+      
+      <div class="beauty-features">
+        <div class="feature">
+          <i class="fas fa-leaf"></i>
+          <h3>Naturalne składniki</h3>
+          <p>Produkty oparte na naturalnych, ekologicznych składnikach</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-heart"></i>
+          <h3>Bezpieczne dla skóry</h3>
+          <p>Dermatologicznie testowane formuły bezpieczne dla wszystkich typów skóry</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-star"></i>
+          <h3>Najwyższa jakość</h3>
+          <p>Współpraca z renomowanymi markami kosmetycznymi</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-shipping-fast"></i>
+          <h3>Szybka dostawa</h3>
+          <p>Ekspresowa dostawa produktów urody prosto do Twoich drzwi</p>
+        </div>
       </div>
     </div>
   </section>
 
   <footer class="bottom-bar">
     <div class="container">
-      <span>2024 &copy; Modern Style</span>
+      <span>2025 &copy; Modern Style</span>
       <div class="social-icons">
         <a href="#" title="Facebook" class="icon-link" aria-label="Facebook">
           <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
@@ -168,13 +185,13 @@
     </div>
   </footer>
   
-  <script src="js/products/moda.js"></script>
+  <script src="js/products/uroda.js"></script>
   <script>
-    // Integruj dane mody z głównym skryptem
-    if (typeof moda !== 'undefined') {
-      window.produktyMody = moda;
+    // Integruj dane urody z głównym skryptem
+    if (typeof uroda !== 'undefined') {
+      window.produktyUrody = uroda;
     }
   </script>
-  <script src="js/script.js?v=4"></script>
+  <script src="js/script.js?v=5"></script>
 </body>
-</html> 
+</html>

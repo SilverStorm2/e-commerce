@@ -1,6 +1,5 @@
-// Import produktów z modułów ES6
-import { produkty } from './products/index.js';
-console.log('Produkty załadowane:', produkty);
+// Załaduj dane produktów z pliku elektronika.js
+let produkty = {};
 
 // Koszyk - przechowuje produkty dodane przez użytkownika
 let koszyk = [];
@@ -33,9 +32,14 @@ function stworzGwiazdki(ocena) {
 
 // Funkcja tworząca menu z ocenami
 function pokazMenu(kategoria) {
+  console.log('pokazMenu wywołane z kategorią:', kategoria);
+  
   const listaProduktow = produkty[kategoria];
+  console.log('Lista produktów dla kategorii', kategoria, ':', listaProduktow);
+  
   if (!listaProduktow) {
-    console.log('Nie znaleziono produktów dla kategorii:', kategoria);
+    console.error('Nie znaleziono produktów dla kategorii:', kategoria);
+    console.log('Dostępne kategorie:', Object.keys(produkty));
     return;
   }
 
@@ -113,8 +117,11 @@ function pokazMenu(kategoria) {
   menu.innerHTML = menuHTML;
 
   // Dodaj overlay i menu do strony
+  console.log('Dodawanie overlay i menu do DOM...');
   document.body.appendChild(overlay);
   document.body.appendChild(menu);
+  console.log('Menu dodane do DOM. Style overlay:', overlay.style);
+  console.log('Menu jest widoczne:', menu.offsetWidth > 0 && menu.offsetHeight > 0);
 
   // Dodaj event listenery
   const zamknijBtn = menu.querySelector('.zamknij-menu');
@@ -320,7 +327,9 @@ function pobierzNazweKategorii(kategoria) {
     'kuchnia': 'Kuchnia',
     'sypialnia': 'Sypialnia',
     'lazienka': 'Łazienka',
-    'ogrod': 'Ogród'
+    'ogrod': 'Ogród',
+    'uroda': 'Uroda',
+    'stylowa-przygoda': 'Stylowa Przygoda'
   };
   
   return nazwyKategorii[kategoria] || kategoria;
@@ -420,6 +429,8 @@ function aktualizujKoszyk() {
 // Funkcja pokazywania koszyka
 function pokazKoszyk() {
   console.log('Funkcja pokazKoszyk została wywołana');
+  console.log('Zawartość koszyka:', koszyk);
+  console.log('Długość koszyka:', koszyk.length);
   
   // Usuń istniejące modalne okna
   const istniejaceModal = document.querySelector('.modal-recenzje');
@@ -581,6 +592,41 @@ function pokazPowiadomienie(wiadomosc) {
   }, 3000);
 }
 
+// Funkcja przekierowania do odpowiedniej sekcji
+function przekierujDoSekcji(kategoria) {
+  console.log('przekierujDoSekcji wywołane z kategorią:', kategoria);
+  
+  // Mapowanie kategorii na odpowiednie strony
+  const mapowanieStron = {
+    'komputery': 'elektronika.html',
+    'casual': 'stylowa-przygoda.html', // Przekierowanie na stylową przygodę 
+    'salon': 'dom.html',
+    'pilka-nozna': 'sport.html',
+    'akcesoria': 'moda.html', // Pozostaje w modzie (biżuteria, okulary)
+    'uroda': 'uroda.html', // Nowa strona dla produktów urody
+    'stylowa-przygoda': 'stylowa-przygoda.html', // Nowa kategoria
+    // Dodatkowe kategorie które mogą wystąpić
+    'elektronika': 'elektronika.html',
+    'moda': 'moda.html',
+    'dom': 'dom.html', 
+    'sport': 'sport.html'
+  };
+  
+  const stronaDocelowa = mapowanieStron[kategoria];
+  console.log('Strona docelowa dla kategorii', kategoria, ':', stronaDocelowa);
+  
+  if (stronaDocelowa) {
+    console.log('Przekierowanie do:', stronaDocelowa);
+    // Przekieruj do odpowiedniej strony
+    window.location.href = stronaDocelowa;
+  } else {
+    console.warn('Nie znaleziono strony dla kategorii:', kategoria);
+    console.log('Dostępne kategorie:', Object.keys(mapowanieStron));
+    // Fallback - pokaż menu jeśli nie ma odpowiedniej strony
+    pokazMenu(kategoria);
+  }
+}
+
 // Funkcja filtrowania produktów
 function applyFilters() {
   const searchTerm = document.getElementById('searchInput').value.toLowerCase();
@@ -620,9 +666,145 @@ function applyFilters() {
   });
 }
 
+// Test funkcji przekierowania - dodaj do globalnego scope
+window.testPrzekierowanie = function(kategoria) {
+  console.log('Test przekierowania dla kategorii:', kategoria);
+  przekierujDoSekcji(kategoria);
+};
+
+// Funkcja pokazMenu zostanie wyeksportowana po załadowaniu danych
+
+// Test funkcji pokazMenu - dodaj do globalnego scope  
+window.testPokazMenu = function(kategoria) {
+  console.log('Test pokazMenu dla kategorii:', kategoria);
+  pokazMenu(kategoria);
+};
+
+// Prosta funkcja testowa menu - omija sprawdzanie kategorii
+window.testSimpleMenu = function() {
+  console.log('Test prostego menu...');
+  
+  // Utwórz overlay (tło)
+  const overlay = document.createElement('div');
+  overlay.className = 'menu-overlay';
+  overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999;';
+  
+  // Utwórz menu
+  const menu = document.createElement('div');
+  menu.className = 'menu-produktow';
+  menu.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; z-index: 1000; width: 80%; max-width: 600px; max-height: 80%; overflow-y: auto;';
+  
+  menu.innerHTML = `
+    <div class="naglowek-menu">
+      <h4>Test Menu</h4>
+      <button class="zamknij-menu" style="float: right; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">&times;</button>
+    </div>
+    <div class="lista-produktow">
+      <p>To jest test menu. Jeśli widzisz to okno, funkcja pokazMenu działa!</p>
+    </div>
+  `;
+  
+  document.body.appendChild(overlay);
+  document.body.appendChild(menu);
+  
+  // Zamknij po kliknięciu X lub overlay
+  menu.querySelector('.zamknij-menu').addEventListener('click', () => {
+    overlay.remove();
+    menu.remove();
+  });
+  
+  overlay.addEventListener('click', () => {
+    overlay.remove();
+    menu.remove();
+  });
+  
+  console.log('Test menu utworzone!');
+};
+
 // Inicjalizacja po załadowaniu strony
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM załadowany');
+  console.log('Testowanie funkcji przekierowania...');
+  
+  // Załaduj dane elektroniki jeśli są dostępne
+  if (typeof window.produktyElektroniki !== 'undefined') {
+    produkty = {...produkty, ...window.produktyElektroniki};
+    console.log('✓ Załadowano dane elektroniki');
+  } else if (typeof window.elektronika !== 'undefined') {
+    produkty = {...produkty, ...window.elektronika};
+    console.log('✓ Załadowano dane elektroniki (fallback)');
+  }
+  
+  // Załaduj dane mody jeśli są dostępne
+  if (typeof window.produktyMody !== 'undefined') {
+    produkty = {...produkty, ...window.produktyMody};
+    console.log('✓ Załadowano dane mody');
+  } else if (typeof window.moda !== 'undefined') {
+    produkty = {...produkty, ...window.moda};
+    console.log('✓ Załadowano dane mody (fallback)');
+  }
+  
+  // Załaduj dane domu jeśli są dostępne
+  if (typeof window.produktyDomu !== 'undefined') {
+    produkty = {...produkty, ...window.produktyDomu};
+    console.log('✓ Załadowano dane domu');
+  } else if (typeof window.dom !== 'undefined') {
+    produkty = {...produkty, ...window.dom};
+    console.log('✓ Załadowano dane domu (fallback)');
+  }
+  
+  // Załaduj dane sportu jeśli są dostępne
+  if (typeof window.produktySportu !== 'undefined') {
+    produkty = {...produkty, ...window.produktySportu};
+    console.log('✓ Załadowano dane sportu');
+  } else if (typeof window.sport !== 'undefined') {
+    produkty = {...produkty, ...window.sport};
+    console.log('✓ Załadowano dane sportu (fallback)');
+  }
+  
+  // Załaduj dane urody jeśli są dostępne
+  if (typeof window.produktyUrody !== 'undefined') {
+    produkty = {...produkty, ...window.produktyUrody};
+    console.log('✓ Załadowano dane urody');
+  } else if (typeof window.uroda !== 'undefined') {
+    produkty = {...produkty, ...window.uroda};
+    console.log('✓ Załadowano dane urody (fallback)');
+  }
+  
+  // Załaduj dane stylowej przygody jeśli są dostępne
+  if (typeof window.produktyStylowejPrzygody !== 'undefined') {
+    produkty = {...produkty, ...window.produktyStylowejPrzygody};
+    console.log('✓ Załadowano dane stylowej przygody');
+  } else if (typeof window.stylowaPrzygoda !== 'undefined') {
+    produkty = {...produkty, ...window.stylowaPrzygoda};
+    console.log('✓ Załadowano dane stylowej przygody (fallback)');
+  }
+  
+  // Test czy funkcje są dostępne
+  if (typeof przekierujDoSekcji === 'function') {
+    console.log('✓ Funkcja przekierujDoSekcji jest dostępna');
+  } else {
+    console.error('✗ Funkcja przekierujDoSekcji nie jest dostępna');
+  }
+  
+  if (typeof pokazMenu === 'function') {
+    console.log('✓ Funkcja pokazMenu jest dostępna');
+  } else {
+    console.error('✗ Funkcja pokazMenu nie jest dostępna');
+  }
+  
+  if (typeof produkty === 'object' && produkty !== null) {
+    console.log('✓ Obiekt produkty jest dostępny');
+    console.log('Produkty zawierają kategorie:', Object.keys(produkty));
+    console.log('Liczba produktów komputery:', produkty.komputery ? produkty.komputery.length : 0);
+    console.log('Przykładowy produkt komputery:', produkty.komputery ? produkty.komputery[0] : 'brak');
+  } else {
+    console.error('✗ Obiekt produkty nie jest dostępny');
+  }
+  
+  // Eksportuj funkcję pokazMenu do globalnego zasięgu PO załadowaniu danych
+  window.pokazMenu = pokazMenu;
+  
   // Wczytaj koszyk z localStorage
   const zapisanyKoszyk = localStorage.getItem('koszyk');
   if (zapisanyKoszyk) {
@@ -640,17 +822,46 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Przycisk koszyka nie został znaleziony!');
   }
   
-  // Dodaj event listenery do przycisków "Zobacz więcej"
+  // Dodaj event listenery do przycisków "Zobacz więcej" - metoda 1
   const przyciskiZobaczWiecej = document.querySelectorAll('.button-main');
-  przyciskiZobaczWiecej.forEach(przycisk => {
-      if (przycisk.textContent === 'Zobacz więcej') {
+  console.log('Znaleziono przycisków button-main:', przyciskiZobaczWiecej.length);
+  
+  przyciskiZobaczWiecej.forEach((przycisk, index) => {
+    console.log(`Przycisk ${index}: "${przycisk.textContent.trim()}"`);
+    
+    if (przycisk.textContent.trim() === 'Zobacz więcej') {
+      console.log('Dodaję event listener do przycisku:', przycisk);
       przycisk.addEventListener('click', function() {
         const produktDiv = this.closest('.product');
-        const kategoria = produktDiv.getAttribute('data-category');
-        pokazMenu(kategoria);
-        });
+        if (produktDiv) {
+          const kategoria = produktDiv.getAttribute('data-category');
+          console.log('Kliknięto przycisk dla kategorii:', kategoria);
+          przekierujDoSekcji(kategoria);
+        } else {
+          console.error('Nie znaleziono elementu .product dla przycisku');
+        }
+      });
+    }
+  });
+
+  // Dodaj event listenery do przycisków w sekcji produktów - metoda 2 (backup)
+  const produktySekcja = document.querySelector('#oferta .product-grid');
+  if (produktySekcja) {
+    console.log('Znaleziono sekcję produktów, dodaję delegowany event listener');
+    produktySekcja.addEventListener('click', function(event) {
+      if (event.target.classList.contains('button-main') && 
+          event.target.textContent.trim() === 'Zobacz więcej') {
+        
+        const produktDiv = event.target.closest('.product');
+        if (produktDiv) {
+          const kategoria = produktDiv.getAttribute('data-category');
+          console.log('Delegowany event: kliknięto przycisk dla kategorii:', kategoria);
+          event.preventDefault();
+          przekierujDoSekcji(kategoria);
+        }
       }
     });
+  }
   
   // Dodaj event listenery do filtrów (jeśli istnieją)
   const searchInput = document.getElementById('searchInput');

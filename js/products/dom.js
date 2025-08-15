@@ -2,328 +2,233 @@
 const dom = {
   'salon': [
     {
-      nazwa: 'Sofa 3-osobowa',
-      cena: 1999.99,
-      opis: 'Wygodna sofa do salonu',
-      ocena: 4.8,
+      nazwa: 'Sofa narożna premium L-shape',
+      cena: 3499.99,
+      opis: 'Luksusowa sofa narożna z funkcją spania, tapicerka z ekoskóry, wbudowane USB',
+      ocena: 4.9,
       liczbaOcen: 234,
       recenzje: [
-        { uzytkownik: 'Anna K.', ocena: 5, komentarz: 'Świetnie się prezentuje w salonie!', data: '2024-01-17' },
-        { uzytkownik: 'Marek S.', ocena: 4, komentarz: 'Wygodna do siedzenia', data: '2024-01-15' }
+        { uzytkownik: 'Anna K.', ocena: 5, komentarz: 'Idealna do dużego salonu, bardzo wygodna!', data: '2024-01-18' },
+        { uzytkownik: 'Marek S.', ocena: 5, komentarz: 'Funkcja spania to strzał w dziesiątkę', data: '2024-01-15' },
+        { uzytkownik: 'Ewa P.', ocena: 4, komentarz: 'Świetna jakość, ale droga', data: '2024-01-12' }
       ]
     },
     {
-      nazwa: 'Stół kawowy',
-      cena: 599.99,
-      opis: 'Elegancki stół kawowy',
-      ocena: 4.6,
+      nazwa: 'Stolik kawowy szklany industrial',
+      cena: 899.99,
+      opis: 'Nowoczesny stolik kawowy ze szkła hartowanego i stalowych nóg w stylu industrialnym',
+      ocena: 4.7,
       liczbaOcen: 189,
       recenzje: [
-        { uzytkownik: 'Tomasz W.', ocena: 5, komentarz: 'Ładnie komponuje się z sofą', data: '2024-01-16' }
+        { uzytkownik: 'Tomasz W.', ocena: 5, komentarz: 'Ładnie komponuje się z sofą', data: '2024-01-17' },
+        { uzytkownik: 'Julia M.', ocena: 4, komentarz: 'Stylowy, ale trzeba często czyścić szkło', data: '2024-01-14' },
+        { uzytkownik: 'Michał K.', ocena: 5, komentarz: 'Idealny do loftu', data: '2024-01-11' }
       ]
     },
     {
-      nazwa: 'Telewizor 55"',
-      cena: 2499.99,
-      opis: 'Smart TV do salonu',
-      ocena: 4.9,
-      liczbaOcen: 345,
-      recenzje: [
-        { uzytkownik: 'Ewa M.', ocena: 5, komentarz: 'Świetny obraz i dźwięk', data: '2024-01-14' }
-      ]
-    },
-    {
-      nazwa: 'Lampa sufitowa',
-      cena: 399.99,
-      opis: 'Nowoczesna lampa sufitowa',
-      ocena: 4.5,
+      nazwa: 'Regał na książki modułowy dąb',
+      cena: 1299.99,
+      opis: 'Modułowy system regałów z litego drewna dębowego, możliwość rozbudowy',
+      ocena: 4.8,
       liczbaOcen: 156,
       recenzje: [
-        { uzytkownik: 'Piotr L.', ocena: 4, komentarz: 'Ładne oświetlenie', data: '2024-01-13' }
-      ]
-    },
-    {
-      nazwa: 'Dywan salonowy',
-      cena: 299.99,
-      opis: 'Elegancki dywan do salonu',
-      ocena: 4.7,
-      liczbaOcen: 123,
-      recenzje: [
-        { uzytkownik: 'Karolina P.', ocena: 5, komentarz: 'Miękki i ładny', data: '2024-01-12' }
+        { uzytkownik: 'Karolina L.', ocena: 5, komentarz: 'Piękne drewno, solidne wykonanie', data: '2024-01-16' },
+        { uzytkownik: 'Adam G.', ocena: 5, komentarz: 'Można układać w różne konfiguracje', data: '2024-01-13' },
+        { uzytkownik: 'Natalia R.', ocena: 4, komentarz: 'Drogie, ale warte swojej ceny', data: '2024-01-10' }
       ]
     }
   ],
   'sypialnia': [
     {
-      nazwa: 'Łóżko małżeńskie',
-      cena: 1499.99,
-      opis: 'Wygodne łóżko małżeńskie',
-      ocena: 4.8,
+      nazwa: 'Łóżko tapicerowane king size',
+      cena: 2899.99,
+      opis: 'Eleganckie łóżko 180x200 z tapicerowanym zagłówkiem, stelaż z litego drewna',
+      ocena: 4.9,
       liczbaOcen: 267,
       recenzje: [
-        { uzytkownik: 'Jan M.', ocena: 5, komentarz: 'Świetnie się śpi!', data: '2024-01-17' },
-        { uzytkownik: 'Anna S.', ocena: 4, komentarz: 'Solidne wykonanie', data: '2024-01-15' }
+        { uzytkownik: 'Magdalena S.', ocena: 5, komentarz: 'Sypiam jak królewna!', data: '2024-01-19' },
+        { uzytkownik: 'Piotr K.', ocena: 5, komentarz: 'Bardzo stabilne i wygodne', data: '2024-01-16' },
+        { uzytkownik: 'Agata M.', ocena: 4, komentarz: 'Pięknie się prezentuje w sypialni', data: '2024-01-13' }
       ]
     },
     {
-      nazwa: 'Materac ortopedyczny',
-      cena: 899.99,
-      opis: 'Materac do łóżka małżeńskiego',
-      ocena: 4.9,
-      liczbaOcen: 189,
+      nazwa: 'Szafa przesuwna 3-drzwiowa',
+      cena: 1899.99,
+      opis: 'Pojemna szafa z lustrem, system cichego domykania, LED wewnętrzne oświetlenie',
+      ocena: 4.8,
+      liczbaOcen: 198,
       recenzje: [
-        { uzytkownik: 'Marek K.', ocena: 5, komentarz: 'Idealny dla kręgosłupa', data: '2024-01-16' }
+        { uzytkownik: 'Beata L.', ocena: 5, komentarz: 'Dużo miejsca na ubrania, lustro powiększa pokój', data: '2024-01-17' },
+        { uzytkownik: 'Tomasz R.', ocena: 4, komentarz: 'Cichy mechanizm przesuwny', data: '2024-01-14' },
+        { uzytkownik: 'Kasia W.', ocena: 5, komentarz: 'LED oświetlenie to świetny pomysł', data: '2024-01-11' }
       ]
     },
     {
-      nazwa: 'Szafa garderobiana',
-      cena: 1299.99,
-      opis: 'Duża szafa do sypialni',
-      ocena: 4.7,
-      liczbaOcen: 145,
-      recenzje: [
-        { uzytkownik: 'Tomasz P.', ocena: 4, komentarz: 'Dużo miejsca na ubrania', data: '2024-01-14' }
-      ]
-    },
-    {
-      nazwa: 'Lampa nocna',
-      cena: 149.99,
-      opis: 'Delikatna lampa nocna',
+      nazwa: 'Komoda vintage 6 szuflad',
+      cena: 749.99,
+      opis: 'Stylowa komoda w stylu vintage z drewna sosnowego, metalowe uchwyty retro',
       ocena: 4.6,
-      liczbaOcen: 234,
+      liczbaOcen: 134,
       recenzje: [
-        { uzytkownik: 'Ewa W.', ocena: 5, komentarz: 'Idealna do czytania', data: '2024-01-13' }
-      ]
-    },
-    {
-      nazwa: 'Komoda sypialniana',
-      cena: 699.99,
-      opis: 'Elegancka komoda do sypialni',
-      ocena: 4.5,
-      liczbaOcen: 178,
-      recenzje: [
-        { uzytkownik: 'Piotr S.', ocena: 4, komentarz: 'Ładnie się prezentuje', data: '2024-01-12' }
+        { uzytkownik: 'Anna P.', ocena: 5, komentarz: 'Idealna do stylu skandynawskiego', data: '2024-01-15' },
+        { uzytkownik: 'Marek D.', ocena: 4, komentarz: 'Solidna i pojemna', data: '2024-01-12' },
+        { uzytkownik: 'Julia K.', ocena: 5, komentarz: 'Uchwyty są bardzo stylowe', data: '2024-01-09' }
       ]
     }
   ],
   'kuchnia': [
     {
-      nazwa: 'Zestaw garnków',
-      cena: 399.99,
-      opis: 'Kompletny zestaw garnków',
+      nazwa: 'Blat roboczy kwarcowy premium',
+      cena: 2199.99,
+      opis: 'Blat kuchenny z kwarcu 240x60cm, odporny na zarysowania i plamy, różne kolory',
+      ocena: 4.9,
+      liczbaOcen: 145,
+      recenzje: [
+        { uzytkownik: 'Ewa K.', ocena: 5, komentarz: 'Najlepszy blat jaki miałam!', data: '2024-01-18' },
+        { uzytkownik: 'Michał G.', ocena: 5, komentarz: 'Nie zarysowuje się, łatwo czyścić', data: '2024-01-15' },
+        { uzytkownik: 'Monika S.', ocena: 4, komentarz: 'Drogi, ale jakość premium', data: '2024-01-12' }
+      ]
+    },
+    {
+      nazwa: 'Zestaw garnków stalowych 12 elementów',
+      cena: 599.99,
+      opis: 'Profesjonalny zestaw garnków ze stali nierdzewnej, dno termodyfuzyjne, wszystkie płyty',
       ocena: 4.8,
       liczbaOcen: 345,
       recenzje: [
-        { uzytkownik: 'Karolina M.', ocena: 5, komentarz: 'Świetna jakość garnków!', data: '2024-01-17' },
-        { uzytkownik: 'Anna K.', ocena: 4, komentarz: 'Dobra do gotowania', data: '2024-01-15' }
+        { uzytkownik: 'Karolina M.', ocena: 5, komentarz: 'Gotowanie to teraz czysta przyjemność', data: '2024-01-17' },
+        { uzytkownik: 'Adam L.', ocena: 5, komentarz: 'Równomiernie nagrzewają się', data: '2024-01-14' },
+        { uzytkownik: 'Natalia G.', ocena: 4, komentarz: 'Dobry stosunek jakości do ceny', data: '2024-01-11' }
       ]
     },
     {
-      nazwa: 'Mikser kuchenny',
-      cena: 299.99,
-      opis: 'Profesjonalny mikser kuchenny',
+      nazwa: 'Wyspa kuchenna z barem',
+      cena: 3999.99,
+      opis: 'Multifunkcyjna wyspa kuchenna z miejscem na bar, szafkami i blatem granitowym',
       ocena: 4.7,
-      liczbaOcen: 234,
+      liczbaOcen: 89,
       recenzje: [
-        { uzytkownik: 'Marek L.', ocena: 5, komentarz: 'Mocny i wydajny', data: '2024-01-16' }
-      ]
-    },
-    {
-      nazwa: 'Blender',
-      cena: 199.99,
-      opis: 'Blender do smoothie',
-      ocena: 4.6,
-      liczbaOcen: 189,
-      recenzje: [
-        { uzytkownik: 'Tomasz W.', ocena: 4, komentarz: 'Świetny do koktajli', data: '2024-01-14' }
-      ]
-    },
-    {
-      nazwa: 'Toster',
-      cena: 149.99,
-      opis: 'Toster do chleba',
-      ocena: 4.5,
-      liczbaOcen: 267,
-      recenzje: [
-        { uzytkownik: 'Ewa P.', ocena: 5, komentarz: 'Równomiernie opieka', data: '2024-01-13' }
-      ]
-    },
-    {
-      nazwa: 'Ekspres do kawy',
-      cena: 599.99,
-      opis: 'Ekspres do kawy ziarnistej',
-      ocena: 4.9,
-      liczbaOcen: 156,
-      recenzje: [
-        { uzytkownik: 'Jan K.', ocena: 5, komentarz: 'Pyszna kawa każdego ranka', data: '2024-01-12' }
+        { uzytkownik: 'Tomasz K.', ocena: 5, komentarz: 'Centrum kuchni, wszystko pod ręką', data: '2024-01-16' },
+        { uzytkownik: 'Magdalena R.', ocena: 4, komentarz: 'Dużo miejsca do przygotowywania', data: '2024-01-13' },
+        { uzytkownik: 'Piotr W.', ocena: 5, komentarz: 'Idealne do dużej kuchni', data: '2024-01-10' }
       ]
     }
   ],
   'lazienka': [
     {
-      nazwa: 'Zestaw łazienkowy',
-      cena: 299.99,
-      opis: 'Kompletny zestaw łazienkowy',
+      nazwa: 'Kabina prysznicowa premium 90x90',
+      cena: 1899.99,
+      opis: 'Kabina z szkła bezpiecznego 8mm, profil chromowany, system przeciwkapiący',
+      ocena: 4.8,
+      liczbaOcen: 156,
+      recenzje: [
+        { uzytkownik: 'Agata S.', ocena: 5, komentarz: 'Łatwa w utrzymaniu czystości', data: '2024-01-18' },
+        { uzytkownik: 'Marek M.', ocena: 5, komentarz: 'Solidna konstrukcja, nie przecieka', data: '2024-01-15' },
+        { uzytkownik: 'Beata K.', ocena: 4, komentarz: 'Elegancka i funkcjonalna', data: '2024-01-12' }
+      ]
+    },
+    {
+      nazwa: 'Szafka pod umywalkę z blatem',
+      cena: 899.99,
+      opis: 'Nowoczesna szafka podwieszana z umywalką nablatową i blatem z konglomeratu',
       ocena: 4.7,
       liczbaOcen: 234,
       recenzje: [
-        { uzytkownik: 'Anna S.', ocena: 5, komentarz: 'Ładnie wygląda w łazience!', data: '2024-01-17' },
-        { uzytkownik: 'Marek P.', ocena: 4, komentarz: 'Dobra jakość', data: '2024-01-15' }
+        { uzytkownik: 'Julia P.', ocena: 5, komentarz: 'Świetnie wykorzystuje przestrzeń', data: '2024-01-17' },
+        { uzytkownik: 'Kamil G.', ocena: 4, komentarz: 'Modny design, dobra jakość', data: '2024-01-14' },
+        { uzytkownik: 'Ewa L.', ocena: 5, komentarz: 'Umywalka nablatowa to hit', data: '2024-01-11' }
       ]
     },
     {
-      nazwa: 'Mata łazienkowa',
-      cena: 89.99,
-      opis: 'Mata antypoślizgowa',
+      nazwa: 'Zestaw armatury łazienkowej chrom',
+      cena: 449.99,
+      opis: 'Kompletny zestaw: bateria umywalkowa, prysznicowa i akcesoria w chromie',
       ocena: 4.6,
-      liczbaOcen: 345,
+      liczbaOcen: 287,
       recenzje: [
-        { uzytkownik: 'Tomasz M.', ocena: 5, komentarz: 'Bezpieczna i miękka', data: '2024-01-16' }
-      ]
-    },
-    {
-      nazwa: 'Suszarka do włosów',
-      cena: 199.99,
-      opis: 'Profesjonalna suszarka',
-      ocena: 4.8,
-      liczbaOcen: 189,
-      recenzje: [
-        { uzytkownik: 'Ewa K.', ocena: 5, komentarz: 'Szybko suszy włosy', data: '2024-01-14' }
-      ]
-    },
-    {
-      nazwa: 'Lustro łazienkowe',
-      cena: 249.99,
-      opis: 'Duże lustro z oświetleniem',
-      ocena: 4.5,
-      liczbaOcen: 123,
-      recenzje: [
-        { uzytkownik: 'Karolina W.', ocena: 4, komentarz: 'Dobre oświetlenie', data: '2024-01-13' }
-      ]
-    },
-    {
-      nazwa: 'Szafka łazienkowa',
-      cena: 399.99,
-      opis: 'Szafka pod umywalkę',
-      ocena: 4.7,
-      liczbaOcen: 178,
-      recenzje: [
-        { uzytkownik: 'Piotr L.', ocena: 5, komentarz: 'Dużo miejsca na kosmetyki', data: '2024-01-12' }
+        { uzytkownik: 'Tomasz S.', ocena: 5, komentarz: 'Wszystko w jednym stylu', data: '2024-01-16' },
+        { uzytkownik: 'Anna W.', ocena: 4, komentarz: 'Dobra jakość za rozsądną cenę', data: '2024-01-13' },
+        { uzytkownik: 'Michał D.', ocena: 5, komentarz: 'Łatwy montaż, instrukcja przejrzysta', data: '2024-01-10' }
       ]
     }
   ],
   'pokoj-dzienny': [
     {
-      nazwa: 'Fotel relaksacyjny',
-      cena: 899.99,
-      opis: 'Wygodny fotel do pokoju dziennego',
+      nazwa: 'Stół rozkładany do jadalni 8 osób',
+      cena: 1599.99,
+      opis: 'Elegancki stół rozkładany z drewna bukowego, mechanizm motylkowy, dla max 8 osób',
       ocena: 4.8,
-      liczbaOcen: 189,
+      liczbaOcen: 167,
       recenzje: [
-        { uzytkownik: 'Jan S.', ocena: 5, komentarz: 'Idealny do relaksu!', data: '2024-01-17' },
-        { uzytkownik: 'Anna M.', ocena: 4, komentarz: 'Wygodny do czytania', data: '2024-01-15' }
+        { uzytkownik: 'Magdalena K.', ocena: 5, komentarz: 'Idealny na rodzinne spotkania', data: '2024-01-18' },
+        { uzytkownik: 'Piotr R.', ocena: 5, komentarz: 'Mechanizm działa płynnie', data: '2024-01-15' },
+        { uzytkownik: 'Kasia M.', ocena: 4, komentarz: 'Ładne drewno, solidne wykonanie', data: '2024-01-12' }
       ]
     },
     {
-      nazwa: 'Stół jadalny',
-      cena: 799.99,
-      opis: 'Stół jadalny 6-osobowy',
+      nazwa: 'Kompl krzesła tapicerowane 6 szt',
+      cena: 1199.99,
+      opis: 'Zestaw 6 krzeseł tapicerowanych tkaniną antybakteryjną, stelaż bukowy',
       ocena: 4.7,
-      liczbaOcen: 145,
-      recenzje: [
-        { uzytkownik: 'Marek K.', ocena: 5, komentarz: 'Świetny do rodzinnych obiadów', data: '2024-01-16' }
-      ]
-    },
-    {
-      nazwa: 'Krzesła jadalne',
-      cena: 599.99,
-      opis: 'Zestaw 6 krzeseł jadalnych',
-      ocena: 4.6,
       liczbaOcen: 234,
       recenzje: [
-        { uzytkownik: 'Tomasz W.', ocena: 4, komentarz: 'Wygodne do siedzenia', data: '2024-01-14' }
+        { uzytkownik: 'Beata S.', ocena: 5, komentarz: 'Wygodne i eleganckie', data: '2024-01-17' },
+        { uzytkownik: 'Adam K.', ocena: 4, komentarz: 'Dobra jakość tapicerki', data: '2024-01-14' },
+        { uzytkownik: 'Natalia L.', ocena: 5, komentarz: 'Pasują idealnie do stołu', data: '2024-01-11' }
       ]
     },
     {
-      nazwa: 'Witryna',
-      cena: 1299.99,
-      opis: 'Elegancka witryna do pokoju dziennego',
+      nazwa: 'Kredens vintage 4-drzwiowy',
+      cena: 2299.99,
+      opis: 'Stylowy kredens z drewna dębowego z przeszklonymi drzwiami i oświetleniem LED',
       ocena: 4.9,
       liczbaOcen: 98,
       recenzje: [
-        { uzytkownik: 'Ewa P.', ocena: 5, komentarz: 'Pięknie prezentuje się w salonie', data: '2024-01-13' }
-      ]
-    },
-    {
-      nazwa: 'Lampa podłogowa',
-      cena: 349.99,
-      opis: 'Nowoczesna lampa podłogowa',
-      ocena: 4.5,
-      liczbaOcen: 167,
-      recenzje: [
-        { uzytkownik: 'Karolina L.', ocena: 4, komentarz: 'Ładne oświetlenie', data: '2024-01-12' }
+        { uzytkownik: 'Ewa G.', ocena: 5, komentarz: 'Piękny mebel, prawdziwa ozdoba salonu', data: '2024-01-16' },
+        { uzytkownik: 'Tomasz W.', ocena: 5, komentarz: 'LED podświetla pięknie naczynia', data: '2024-01-13' },
+        { uzytkownik: 'Julia R.', ocena: 4, komentarz: 'Drogi, ale wart każdej złotówki', data: '2024-01-10' }
       ]
     }
   ],
   'ogrod': [
     {
-      nazwa: 'Stół ogrodowy',
-      cena: 499.99,
-      opis: 'Stół ogrodowy z krzesłami',
+      nazwa: 'Zestaw mebli ogrodowych technorattan',
+      cena: 2799.99,
+      opis: 'Kompletny zestaw: sofa narożna, stolik, 2 fotele z technorattanu z poduszkami',
       ocena: 4.8,
-      liczbaOcen: 234,
-      recenzje: [
-        { uzytkownik: 'Jan M.', ocena: 5, komentarz: 'Świetny do grillowania!', data: '2024-01-17' },
-        { uzytkownik: 'Anna K.', ocena: 4, komentarz: 'Ładnie wygląda w ogrodzie', data: '2024-01-15' }
-      ]
-    },
-    {
-      nazwa: 'Grill ogrodowy',
-      cena: 399.99,
-      opis: 'Profesjonalny grill ogrodowy',
-      ocena: 4.7,
       liczbaOcen: 189,
       recenzje: [
-        { uzytkownik: 'Marek S.', ocena: 5, komentarz: 'Świetne grillowanie', data: '2024-01-16' }
+        { uzytkownik: 'Marek P.', ocena: 5, komentarz: 'Odporny na warunki atmosferyczne', data: '2024-01-18' },
+        { uzytkownik: 'Agata K.', ocena: 5, komentarz: 'Wygodny i stylowy, polecam!', data: '2024-01-15' },
+        { uzytkownik: 'Kamil S.', ocena: 4, komentarz: 'Poduszki można prać w pralce', data: '2024-01-12' }
       ]
     },
     {
-      nazwa: 'Hamak ogrodowy',
-      cena: 199.99,
-      opis: 'Wygodny hamak do ogrodu',
-      ocena: 4.6,
+      nazwa: 'Grill gazowy 4-palnikowy premium',
+      cena: 1899.99,
+      opis: 'Profesjonalny grill gazowy ze stali nierdzewnej, termometr, boczny palnik',
+      ocena: 4.9,
       liczbaOcen: 145,
       recenzje: [
-        { uzytkownik: 'Tomasz P.', ocena: 4, komentarz: 'Idealny do relaksu', data: '2024-01-14' }
+        { uzytkownik: 'Piotr L.', ocena: 5, komentarz: 'Grillowanie na najwyższym poziomie!', data: '2024-01-17' },
+        { uzytkownik: 'Tomasz K.', ocena: 5, komentarz: 'Równomiernie rozprowadza ciepło', data: '2024-01-14' },
+        { uzytkownik: 'Michał G.', ocena: 4, komentarz: 'Solidny i funkcjonalny', data: '2024-01-11' }
       ]
     },
     {
-      nazwa: 'Oświetlenie ogrodowe',
-      cena: 299.99,
-      opis: 'Zestaw oświetlenia ogrodowego',
-      ocena: 4.5,
-      liczbaOcen: 123,
+      nazwa: 'Parasol ogrodowy 3m z podstawą',
+      cena: 599.99,
+      opis: 'Duży parasol ogrodowy z funkcją uchylania, tkanina UV-protection, metalowa podstawa',
+      ocena: 4.6,
+      liczbaOcen: 267,
       recenzje: [
-        { uzytkownik: 'Ewa W.', ocena: 5, komentarz: 'Pięknie oświetla ogród', data: '2024-01-13' }
-      ]
-    },
-    {
-      nazwa: 'Donice ogrodowe',
-      cena: 149.99,
-      opis: 'Zestaw donic ogrodowych',
-      ocena: 4.7,
-      liczbaOcen: 178,
-      recenzje: [
-        { uzytkownik: 'Karolina M.', ocena: 4, komentarz: 'Ładne donice na kwiaty', data: '2024-01-12' }
+        { uzytkownik: 'Anna M.', ocena: 5, komentarz: 'Daje świetny cień, stabilny', data: '2024-01-16' },
+        { uzytkownik: 'Karolina W.', ocena: 4, komentarz: 'Funkcja uchylania bardzo przydatna', data: '2024-01-13' },
+        { uzytkownik: 'Ewa P.', ocena: 5, komentarz: 'Ochrona UV działa doskonale', data: '2024-01-10' }
       ]
     }
   ]
 };
 
-// Eksportuj obiekt dom
-export { dom };
-
-// Dla kompatybilności z CommonJS
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = dom;
-}
+// Eksportuj obiekt domu - bez ES6 modules
+window.dom = dom;

@@ -17,6 +17,8 @@
         <a href="dom.html">Dom</a>
         <a href="sport.html" class="active">Sport</a>
         <a href="elektronika.html">Elektronika</a>
+        <a href="uroda.html">Uroda</a>
+        <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
       <div class="koszyk-icon">
@@ -182,7 +184,14 @@
       </div>
     </div>
   </footer>
-  <script type="module" src="js/script.js?v=5"></script>
+  <script src="js/products/sport.js"></script>
+  <script>
+    // Integruj dane sportu z głównym skryptem
+    if (typeof sport !== 'undefined') {
+      window.produktySportu = sport;
+    }
+  </script>
+  <script src="js/script.js?v=5"></script>
 </body>
 </html>
 

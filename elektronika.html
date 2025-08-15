@@ -17,6 +17,8 @@
         <a href="dom.html">Dom</a>
         <a href="sport.html">Sport</a>
         <a href="elektronika.html" class="active">Elektronika</a>
+        <a href="uroda.html">Uroda</a>
+        <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
       <div class="koszyk-icon">
@@ -79,7 +81,7 @@
           <img src="images/elek1_komp.jpg" alt="Komputery i laptopy">
           <h3>Komputery i laptopy</h3>
           <p>Profesjonalne rozwiązania dla pracy i rozrywki — od notebooków po stacje robocze.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('komputery', this)">Zobacz więcej</button>
         </div>
 
         <!-- Smartfony i akcesoria -->
@@ -87,7 +89,7 @@
           <img src="images/elek2_smartfon.jpg" alt="Smartfony i akcesoria">
           <h3>Smartfony i akcesoria</h3>
           <p>Najnowsze modele telefonów i niezbędne akcesoria dla Twojego urządzenia.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('smartfony', this)">Zobacz więcej</button>
         </div>
 
         <!-- Sprzęt audio -->
@@ -95,7 +97,7 @@
           <img src="images/elek3_audio.jpg" alt="Sprzęt audio">
           <h3>Sprzęt audio</h3>
           <p>Najwyższej jakości dźwięk dla domowego kina i słuchania muzyki.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('audio', this)">Zobacz więcej</button>
         </div>
 
         <!-- Telewizory i wideo -->
@@ -103,7 +105,7 @@
           <img src="images/elek4_tv.jpg" alt="Telewizory i wideo">
           <h3>Telewizory i wideo</h3>
           <p>Immersyjne doświadczenia wizualne z najnowszymi technologiami wyświetlania.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('tv', this)">Zobacz więcej</button>
         </div>
 
         <!-- Gaming -->
@@ -111,7 +113,7 @@
           <img src="images/elek5_gaming.jpg" alt="Gaming">
           <h3>Gaming</h3>
           <p>Profesjonalny sprzęt gamingowy dla graczy na każdym poziomie.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('gaming', this)">Zobacz więcej</button>
         </div>
 
         <!-- Smart Home -->
@@ -119,7 +121,7 @@
           <img src="images/elek6_home.jpg" alt="Smart Home">
           <h3>Smart Home</h3>
           <p>Inteligentne rozwiązania dla nowoczesnego domu przyszłości.</p>
-          <button class="button-main" type="button">Zobacz więcej</button>
+          <button class="button-main" type="button" onclick="pokazMenu('smart-home', this)">Zobacz więcej</button>
         </div>
       </div>
     </section>
@@ -167,6 +169,13 @@
       </div>
     </div>
   </footer>
-  <script type="module" src="js/script.js?v=3"></script>
+  <script src="js/products/elektronika.js"></script>
+  <script>
+    // Integruj dane elektroniki z głównym skryptem
+    if (typeof elektronika !== 'undefined') {
+      window.produktyElektroniki = elektronika;
+    }
+  </script>
+  <script src="js/script.js?v=4"></script>
 </body>
 </html>
