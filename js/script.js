@@ -4,6 +4,10 @@ let produkty = {};
 // Koszyk - przechowuje produkty dodane przez użytkownika
 let koszyk = [];
 let ulubione = new Set();
+
+// System rabatów
+let aktywneRabaty = [];
+let wybranyKodRabatu = '';
 // Obrazy nie są już zapisywane; przechowujemy tylko nazwy produktów w ulubionych
 
 // Funkcja tworząca gwiazdki
@@ -430,6 +434,12 @@ function aktualizujKoszyk() {
     const sumaProduktow = koszyk.reduce((sum, item) => sum + item.ilosc, 0);
     licznik.textContent = sumaProduktow;
   }
+  
+  // Aktualizuj modal koszyka jeśli jest otwarty
+  const modal = document.getElementById('koszyk-modal');
+  if (modal && modal.style.display === 'flex') {
+    pokazKoszyk();
+  }
 }
 
 function aktualizujLicznikUlubionych() {
@@ -513,6 +523,14 @@ function pokazKoszyk() {
         <button class="zamknij-modal">&times;</button>
     </div>
       <div class="modal-body">
+        <div class="discount-section" style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+          <h4>Kod promocyjny</h4>
+          <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+            <input type="text" id="discount-code" placeholder="Wprowadź kod promocyjny" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            <button id="apply-discount" class="button-main" style="padding: 8px 16px;">Zastosuj</button>
+          </div>
+          <div id="discount-info" style="display: none; color: #28a745; font-weight: bold;"></div>
+        </div>
   `;
 
   if (koszyk.length === 0) {
@@ -543,9 +561,18 @@ function pokazKoszyk() {
     modalHTML += '</div>';
     
     const cenaCalkowita = koszyk.reduce((sum, item) => sum + (item.cena * item.ilosc), 0);
+    const rabat = calculateDiscount(cenaCalkowita);
+    const cenaPoRabacie = cenaCalkowita - rabat;
+    
     modalHTML += `
     <div class="koszyk-podsumowanie">
-        <h4>Cena całkowita: ${cenaCalkowita.toFixed(2)} zł</h4>
+        <div class="price-breakdown">
+          <div>Cena całkowita: ${cenaCalkowita.toFixed(2)} zł</div>
+          ${rabat > 0 ? `<div style="color: #28a745;">Rabat: -${rabat.toFixed(2)} zł</div>` : ''}
+          <div style="font-weight: bold; font-size: 1.2em; color: #e74c3c;">
+            Do zapłaty: ${cenaPoRabacie.toFixed(2)} zł
+          </div>
+        </div>
         <button class="wyczysc-koszyk">Wyczyść koszyk</button>
         <button class="finalizuj-zamowienie">Finalizuj zamówienie</button>
       </div>
@@ -572,6 +599,12 @@ function pokazKoszyk() {
     zamknijBtn.addEventListener('click', () => {
       modal.style.display = 'none';
     });
+  }
+  
+  // Dodaj event listener do przycisku rabatu
+  const applyDiscountBtn = modal.querySelector('#apply-discount');
+  if (applyDiscountBtn) {
+    applyDiscountBtn.addEventListener('click', applyDiscount);
   }
 
   // Event listenery dla kontrolek ilości
@@ -773,6 +806,74 @@ function initDropdownMenu() {
   console.log('Dropdown menu initialized');
 }
 
+// Funkcje systemu rabatów
+function loadDiscounts() {
+  const savedDiscounts = localStorage.getItem('adminData');
+  if (savedDiscounts) {
+    const adminData = JSON.parse(savedDiscounts);
+    aktywneRabaty = adminData.discounts || [];
+  }
+}
+
+function applyDiscount() {
+  const discountCode = document.getElementById('discount-code').value.trim().toUpperCase();
+  const discountInfo = document.getElementById('discount-info');
+  
+  if (!discountCode) {
+    alert('Wprowadź kod promocyjny');
+    return;
+  }
+  
+  const discount = aktywneRabaty.find(d => d.code === discountCode && d.active);
+  
+  if (!discount) {
+    alert('Nieprawidłowy lub nieaktywny kod promocyjny');
+    return;
+  }
+  
+  if (discount.uses >= discount.limit) {
+    alert('Kod promocyjny został wyczerpany');
+    return;
+  }
+  
+  if (new Date() > new Date(discount.expires)) {
+    alert('Kod promocyjny wygasł');
+    return;
+  }
+  
+  wybranyKodRabatu = discountCode;
+  discount.uses++;
+  
+  // Zapisz zaktualizowane dane
+  const adminData = JSON.parse(localStorage.getItem('adminData') || '{}');
+  adminData.discounts = aktywneRabaty;
+  localStorage.setItem('adminData', JSON.stringify(adminData));
+  
+  // Pokaż informację o rabacie
+  const discountText = discount.type === 'percentage' 
+    ? `${discount.value}% zniżki`
+    : `${discount.value} zł zniżki`;
+  
+  discountInfo.innerHTML = `✅ Zastosowano kod: ${discountText}`;
+  discountInfo.style.display = 'block';
+  
+  // Przelicz koszyk
+  aktualizujKoszyk();
+}
+
+function calculateDiscount(total) {
+  if (!wybranyKodRabatu) return 0;
+  
+  const discount = aktywneRabaty.find(d => d.code === wybranyKodRabatu);
+  if (!discount) return 0;
+  
+  if (discount.type === 'percentage') {
+    return (total * discount.value) / 100;
+  } else {
+    return Math.min(discount.value, total);
+  }
+}
+
 // Prosta funkcja testowa menu - omija sprawdzanie kategorii
 window.testSimpleMenu = function() {
   console.log('Test prostego menu...');
@@ -937,6 +1038,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Dodaj event listener do przycisku koszyka
   const koszykBtn = document.querySelector('.koszyk-btn');
+  
+  // Załaduj rabaty z localStorage
+  loadDiscounts();
   // Wstaw (jeśli brak) ikonę Ulubione do headera
   const topContainer = document.querySelector('.top-bar .container');
   if (topContainer && !document.querySelector('.ulubione-icon')) {
