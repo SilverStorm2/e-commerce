@@ -64,6 +64,41 @@ function loadAdminData() {
   const savedData = localStorage.getItem('adminData');
   if (savedData) {
     adminData = JSON.parse(savedData);
+    
+    // Sprawdź czy TOTAL50 już istnieje, jeśli nie - dodaj go
+    const hasTotal50 = adminData.discounts && adminData.discounts.some(d => d.code === 'TOTAL50');
+    if (!hasTotal50) {
+      if (!adminData.discounts) {
+        adminData.discounts = [];
+      }
+      adminData.discounts.push({
+        code: 'TOTAL50',
+        type: 'percentage',
+        value: 50,
+        uses: 0,
+        limit: 999999,
+        expires: null,
+        active: true
+      });
+      console.log('✅ Dodano kod TOTAL50 do istniejących danych');
+    }
+    
+    // Zaktualizuj istniejące rabaty - usuń ograniczenia czasowe
+    if (adminData.discounts) {
+      let updated = false;
+      adminData.discounts.forEach(discount => {
+        if (discount.expires !== null) {
+          discount.expires = null;
+          updated = true;
+        }
+      });
+      if (updated) {
+        console.log('✅ Zaktualizowano rabaty - usunięto ograniczenia czasowe');
+      }
+    }
+    
+    // Zapisz zaktualizowane dane
+    saveAdminData();
   } else {
     // Inicjalizuj przykładowe dane
     initSampleData();
@@ -113,7 +148,7 @@ function initSampleData() {
         value: 10,
         uses: 15,
         limit: 100,
-        expires: '2024-12-31',
+        expires: null,
         active: true
       },
       {
@@ -122,7 +157,16 @@ function initSampleData() {
         value: 50,
         uses: 8,
         limit: 50,
-        expires: '2024-06-30',
+        expires: null,
+        active: true
+      },
+      {
+        code: 'TOTAL50',
+        type: 'percentage',
+        value: 50,
+        uses: 0,
+        limit: 999999,
+        expires: null,
         active: true
       }
     ],
@@ -326,7 +370,7 @@ function displayDiscounts() {
       <td>${discount.type === 'percentage' ? discount.value + '%' : discount.value + ' zł'}</td>
       <td>${discount.uses}</td>
       <td>${discount.limit}</td>
-      <td>${discount.expires}</td>
+      <td>${discount.expires ? discount.expires : 'Bez ograniczeń'}</td>
       <td><span class="status-badge status-${discount.active ? 'active' : 'inactive'}">${discount.active ? 'Aktywny' : 'Nieaktywny'}</span></td>
       <td>
         <button class="btn-admin warning" onclick="editDiscount('${discount.code}')">
@@ -485,6 +529,7 @@ window.showAddDiscountForm = function() {
   const code = prompt('Kod promocyjny:');
   const type = prompt('Typ (percentage/fixed):');
   const value = prompt('Wartość:');
+  const limit = prompt('Limit użyć (opcjonalnie, zostaw puste dla bez limitu):');
   
   if (code && type && value) {
     const discount = {
@@ -492,14 +537,15 @@ window.showAddDiscountForm = function() {
       type: type,
       value: parseFloat(value),
       uses: 0,
-      limit: 100,
-      expires: '2024-12-31',
+      limit: limit ? parseInt(limit) : 999999, // Bez limitu jeśli nie podano
+      expires: null, // Bez ograniczeń czasowych
       active: true
     };
     
     adminData.discounts.push(discount);
     saveAdminData();
     displayDiscounts();
+    alert(`Kod promocyjny "${code}" został dodany i jest aktywny bez ograniczeń czasowych!`);
   }
 };
 

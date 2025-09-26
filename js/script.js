@@ -504,11 +504,11 @@ function pokazKoszyk() {
     istniejaceOverlay.remove();
   }
 
-  // Sprawdź czy modal już jest otwarty
+  // Usuń istniejący modal koszyka jeśli istnieje
   const istniejeModal = document.getElementById('koszyk-modal');
   if (istniejeModal) {
-    istniejeModal.style.display = 'flex';
-    return;
+    console.log('Usuwam istniejący modal koszyka aby zaktualizować zawartość');
+    istniejeModal.remove();
   }
   
   // Utwórz modal koszyka
@@ -528,6 +528,7 @@ function pokazKoszyk() {
           <div style="display: flex; gap: 10px; margin-bottom: 10px;">
             <input type="text" id="discount-code" placeholder="Wprowadź kod promocyjny" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
             <button id="apply-discount" class="button-main" style="padding: 8px 16px;">Zastosuj</button>
+            <button id="remove-discount" class="btn-admin danger" style="padding: 8px 16px; display: none;">Usuń kod</button>
           </div>
           <div id="discount-info" style="display: none; color: #28a745; font-weight: bold;"></div>
         </div>
@@ -606,6 +607,15 @@ function pokazKoszyk() {
   if (applyDiscountBtn) {
     applyDiscountBtn.addEventListener('click', applyDiscount);
   }
+  
+  // Dodaj event listener do przycisku usuwania rabatu
+  const removeDiscountBtn = modal.querySelector('#remove-discount');
+  if (removeDiscountBtn) {
+    removeDiscountBtn.addEventListener('click', removeDiscount);
+  }
+  
+  // Sprawdź czy kod jest już zastosowany i pokaż odpowiedni przycisk
+  updateDiscountButtons();
 
   // Event listenery dla kontrolek ilości
   const przyciskiZmniejsz = modal.querySelectorAll('.zmniejsz-ilosc');
@@ -816,30 +826,32 @@ function loadDiscounts() {
 }
 
 function applyDiscount() {
+  console.log('Funkcja applyDiscount została wywołana');
   const discountCode = document.getElementById('discount-code').value.trim().toUpperCase();
   const discountInfo = document.getElementById('discount-info');
+  console.log('Wprowadzony kod:', discountCode);
   
   if (!discountCode) {
     alert('Wprowadź kod promocyjny');
     return;
   }
   
+  console.log('Dostępne rabaty:', aktywneRabaty);
   const discount = aktywneRabaty.find(d => d.code === discountCode && d.active);
+  console.log('Znaleziony rabat:', discount);
   
   if (!discount) {
     alert('Nieprawidłowy lub nieaktywny kod promocyjny');
     return;
   }
   
-  if (discount.uses >= discount.limit) {
+  // Sprawdź limit użyć (jeśli jest ustawiony)
+  if (discount.limit && discount.uses >= discount.limit) {
     alert('Kod promocyjny został wyczerpany');
     return;
   }
   
-  if (new Date() > new Date(discount.expires)) {
-    alert('Kod promocyjny wygasł');
-    return;
-  }
+  // Kody działają bez ograniczeń czasowych - nie sprawdzamy daty wygaśnięcia
   
   wybranyKodRabatu = discountCode;
   discount.uses++;
@@ -857,8 +869,83 @@ function applyDiscount() {
   discountInfo.innerHTML = `✅ Zastosowano kod: ${discountText}`;
   discountInfo.style.display = 'block';
   
-  // Przelicz koszyk
+  // Przelicz i odśwież koszyk
   aktualizujKoszyk();
+  
+  // Odśwież modal koszyka aby pokazać nową cenę
+  const modal = document.getElementById('koszyk-modal');
+  if (modal && modal.style.display === 'flex') {
+    console.log('Odświeżam modal koszyka...');
+    updateCartPrice();
+  }
+  
+  // Zaktualizuj przyciski
+  updateDiscountButtons();
+}
+
+function removeDiscount() {
+  wybranyKodRabatu = '';
+  
+  // Ukryj informację o rabacie
+  const discountInfo = document.getElementById('discount-info');
+  if (discountInfo) {
+    discountInfo.style.display = 'none';
+  }
+  
+  // Wyczyść pole kodu
+  const discountCodeInput = document.getElementById('discount-code');
+  if (discountCodeInput) {
+    discountCodeInput.value = '';
+  }
+  
+  // Przelicz i odśwież koszyk
+  aktualizujKoszyk();
+  
+  // Odśwież modal koszyka aby pokazać nową cenę
+  const modal = document.getElementById('koszyk-modal');
+  if (modal && modal.style.display === 'flex') {
+    console.log('Odświeżam modal koszyka...');
+    updateCartPrice();
+  }
+  
+  // Zaktualizuj przyciski
+  updateDiscountButtons();
+}
+
+function updateCartPrice() {
+  console.log('Aktualizuję cenę w koszyku...');
+  const cenaCalkowita = koszyk.reduce((sum, item) => sum + (item.cena * item.ilosc), 0);
+  const rabat = calculateDiscount(cenaCalkowita);
+  const cenaPoRabacie = cenaCalkowita - rabat;
+  
+  console.log('Cena całkowita:', cenaCalkowita);
+  console.log('Rabat:', rabat);
+  console.log('Cena po rabacie:', cenaPoRabacie);
+  
+  // Znajdź elementy z ceną i zaktualizuj je
+  const priceElements = document.querySelectorAll('.price-breakdown');
+  priceElements.forEach(element => {
+    element.innerHTML = `
+      <div>Cena całkowita: ${cenaCalkowita.toFixed(2)} zł</div>
+      ${rabat > 0 ? `<div style="color: #28a745;">Rabat: -${rabat.toFixed(2)} zł</div>` : ''}
+      <div style="font-weight: bold; font-size: 1.2em; color: #e74c3c;">
+        Do zapłaty: ${cenaPoRabacie.toFixed(2)} zł
+      </div>
+    `;
+  });
+}
+
+function updateDiscountButtons() {
+  const applyBtn = document.getElementById('apply-discount');
+  const removeBtn = document.getElementById('remove-discount');
+  
+  if (wybranyKodRabatu) {
+    if (applyBtn) applyBtn.style.display = 'none';
+    if (removeBtn) removeBtn.style.display = 'inline-block';
+  } else {
+    if (applyBtn) applyBtn.style.display = 'inline-block';
+    if (removeBtn) removeBtn.style.display = 'none';
+  }
 }
 
 function calculateDiscount(total) {
@@ -946,55 +1033,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Załaduj dane elektroniki jeśli są dostępne
   if (typeof window.produktyElektroniki !== 'undefined') {
-    produkty = {...produkty, ...window.produktyElektroniki};
+    produkty = Object.assign({}, produkty, window.produktyElektroniki);
     console.log('✓ Załadowano dane elektroniki');
   } else if (typeof window.elektronika !== 'undefined') {
-    produkty = {...produkty, ...window.elektronika};
+    produkty = Object.assign({}, produkty, window.elektronika);
     console.log('✓ Załadowano dane elektroniki (fallback)');
   }
   
   // Załaduj dane mody jeśli są dostępne
   if (typeof window.produktyMody !== 'undefined') {
-    produkty = {...produkty, ...window.produktyMody};
+    produkty = Object.assign({}, produkty, window.produktyMody);
     console.log('✓ Załadowano dane mody');
   } else if (typeof window.moda !== 'undefined') {
-    produkty = {...produkty, ...window.moda};
+    produkty = Object.assign({}, produkty, window.moda);
     console.log('✓ Załadowano dane mody (fallback)');
   }
   
   // Załaduj dane domu jeśli są dostępne
   if (typeof window.produktyDomu !== 'undefined') {
-    produkty = {...produkty, ...window.produktyDomu};
+    produkty = Object.assign({}, produkty, window.produktyDomu);
     console.log('✓ Załadowano dane domu');
   } else if (typeof window.dom !== 'undefined') {
-    produkty = {...produkty, ...window.dom};
+    produkty = Object.assign({}, produkty, window.dom);
     console.log('✓ Załadowano dane domu (fallback)');
   }
   
   // Załaduj dane sportu jeśli są dostępne
   if (typeof window.produktySportu !== 'undefined') {
-    produkty = {...produkty, ...window.produktySportu};
+    produkty = Object.assign({}, produkty, window.produktySportu);
     console.log('✓ Załadowano dane sportu');
   } else if (typeof window.sport !== 'undefined') {
-    produkty = {...produkty, ...window.sport};
+    produkty = Object.assign({}, produkty, window.sport);
     console.log('✓ Załadowano dane sportu (fallback)');
   }
   
   // Załaduj dane urody jeśli są dostępne
   if (typeof window.produktyUrody !== 'undefined') {
-    produkty = {...produkty, ...window.produktyUrody};
+    produkty = Object.assign({}, produkty, window.produktyUrody);
     console.log('✓ Załadowano dane urody');
   } else if (typeof window.uroda !== 'undefined') {
-    produkty = {...produkty, ...window.uroda};
+    produkty = Object.assign({}, produkty, window.uroda);
     console.log('✓ Załadowano dane urody (fallback)');
   }
   
   // Załaduj dane stylowej przygody jeśli są dostępne
   if (typeof window.produktyStylowejPrzygody !== 'undefined') {
-    produkty = {...produkty, ...window.produktyStylowejPrzygody};
+    produkty = Object.assign({}, produkty, window.produktyStylowejPrzygody);
     console.log('✓ Załadowano dane stylowej przygody');
   } else if (typeof window.stylowaPrzygoda !== 'undefined') {
-    produkty = {...produkty, ...window.stylowaPrzygoda};
+    produkty = Object.assign({}, produkty, window.stylowaPrzygoda);
     console.log('✓ Załadowano dane stylowej przygody (fallback)');
   }
   
