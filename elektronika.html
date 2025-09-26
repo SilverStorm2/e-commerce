@@ -13,13 +13,20 @@
       <h1 class="shop-name">Modern Style</h1>
       <nav class="main-nav">
         <a href="index.html">Home</a>
-        <a href="moda.html">Moda</a>
-        <a href="dom.html">Dom</a>
-        <a href="sport.html">Sport</a>
-        <a href="elektronika.html" class="active">Elektronika</a>
-        <a href="uroda.html">Uroda</a>
-        <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
-        <a href="#kontakt">Kontakt</a>
+        <div class="dropdown">
+          <a href="#oferta" class="dropdown-toggle">Oferta</a>
+          <div class="dropdown-menu">
+            <a href="moda.html">Moda</a>
+            <a href="dom.html">Dom</a>
+            <a href="sport.html">Sport</a>
+            <a href="elektronika.html">Elektronika</a>
+            <a href="uroda.html">Uroda</a>
+            <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
+          </div>
+        </div>
+        <a href="ulubione.html">Ulubione</a>
+        <a href="index.html#jak-to-dziala">Jak to działa</a>
+        <a href="index.html#kontakt">Kontakt</a>
       </nav>
       <div class="koszyk-icon">
         <button class="koszyk-btn">
@@ -78,7 +85,7 @@
       <div class="product-grid">
         <!-- Komputery i laptopy -->
         <div class="product">
-          <img src="images/elek1_komp.jpg" alt="Komputery i laptopy">
+          <img src="images/elek1_komp.jpg" alt="Komputery i laptopy" loading="lazy">
           <h3>Komputery i laptopy</h3>
           <p>Profesjonalne rozwiązania dla pracy i rozrywki — od notebooków po stacje robocze.</p>
           <button class="button-main" type="button" onclick="pokazMenu('komputery', this)">Zobacz więcej</button>
@@ -86,7 +93,7 @@
 
         <!-- Smartfony i akcesoria -->
         <div class="product">
-          <img src="images/elek2_smartfon.jpg" alt="Smartfony i akcesoria">
+          <img src="images/elek2_smartfon.jpg" alt="Smartfony i akcesoria" loading="lazy">
           <h3>Smartfony i akcesoria</h3>
           <p>Najnowsze modele telefonów i niezbędne akcesoria dla Twojego urządzenia.</p>
           <button class="button-main" type="button" onclick="pokazMenu('smartfony', this)">Zobacz więcej</button>
@@ -94,7 +101,7 @@
 
         <!-- Sprzęt audio -->
         <div class="product">
-          <img src="images/elek3_audio.jpg" alt="Sprzęt audio">
+          <img src="images/elek3_audio.jpg" alt="Sprzęt audio" loading="lazy">
           <h3>Sprzęt audio</h3>
           <p>Najwyższej jakości dźwięk dla domowego kina i słuchania muzyki.</p>
           <button class="button-main" type="button" onclick="pokazMenu('audio', this)">Zobacz więcej</button>
@@ -102,7 +109,7 @@
 
         <!-- Telewizory i wideo -->
         <div class="product">
-          <img src="images/elek4_tv.jpg" alt="Telewizory i wideo">
+          <img src="images/elek4_tv.jpg" alt="Telewizory i wideo" loading="lazy">
           <h3>Telewizory i wideo</h3>
           <p>Immersyjne doświadczenia wizualne z najnowszymi technologiami wyświetlania.</p>
           <button class="button-main" type="button" onclick="pokazMenu('tv', this)">Zobacz więcej</button>
@@ -110,7 +117,7 @@
 
         <!-- Gaming -->
         <div class="product">
-          <img src="images/elek5_gaming.jpg" alt="Gaming">
+          <img src="images/elek5_gaming.jpg" alt="Gaming" loading="lazy">
           <h3>Gaming</h3>
           <p>Profesjonalny sprzęt gamingowy dla graczy na każdym poziomie.</p>
           <button class="button-main" type="button" onclick="pokazMenu('gaming', this)">Zobacz więcej</button>
@@ -118,7 +125,7 @@
 
         <!-- Smart Home -->
         <div class="product">
-          <img src="images/elek6_home.jpg" alt="Smart Home">
+          <img src="images/elek6_home.jpg" alt="Smart Home" loading="lazy">
           <h3>Smart Home</h3>
           <p>Inteligentne rozwiązania dla nowoczesnego domu przyszłości.</p>
           <button class="button-main" type="button" onclick="pokazMenu('smart-home', this)">Zobacz więcej</button>
@@ -132,11 +139,11 @@
     <h2>Zainspiruj się!</h2>
     <div class="lookbook-grid">
       <div class="lookbook-item">
-        <img src="images/1-electronics.jpg" alt="Inspiracje elektroniczne 1">
+        <img src="images/1-electronics.jpg" alt="Inspiracje elektroniczne 1" loading="lazy">
         <p>Nowoczesne biuro z najnowszym sprzętem</p>
       </div>
       <div class="lookbook-item">
-        <img src="images/elek7_smart-home.jpg" alt="Inspiracje elektroniczne 2">
+        <img src="images/elek7_smart-home.jpg" alt="Inspiracje elektroniczne 2" loading="lazy">
         <p>Inteligentny dom przyszłości</p>
       </div>
     </div>

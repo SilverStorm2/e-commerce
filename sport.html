@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sport - Modern Style</title>
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -13,13 +13,20 @@
       <h1 class="shop-name">Modern Style</h1>
       <nav class="main-nav">
         <a href="index.html">Home</a>
-        <a href="moda.html">Moda</a>
-        <a href="dom.html">Dom</a>
-        <a href="sport.html" class="active">Sport</a>
-        <a href="elektronika.html">Elektronika</a>
-        <a href="uroda.html">Uroda</a>
-        <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
-        <a href="#kontakt">Kontakt</a>
+        <div class="dropdown">
+          <a href="#oferta" class="dropdown-toggle">Oferta</a>
+          <div class="dropdown-menu">
+            <a href="moda.html">Moda</a>
+            <a href="dom.html">Dom</a>
+            <a href="sport.html">Sport</a>
+            <a href="elektronika.html">Elektronika</a>
+            <a href="uroda.html">Uroda</a>
+            <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
+          </div>
+        </div>
+        <a href="ulubione.html">Ulubione</a>
+        <a href="index.html#jak-to-dziala">Jak to działa</a>
+        <a href="index.html#kontakt">Kontakt</a>
       </nav>
       <div class="koszyk-icon">
         <button class="koszyk-btn">
@@ -191,7 +198,7 @@
       window.produktySportu = sport;
     }
   </script>
-  <script src="js/script.js?v=5"></script>
+  <script src="js/script.js?v=6"></script>
 </body>
 </html>
 

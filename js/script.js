@@ -3,6 +3,8 @@ let produkty = {};
 
 // Koszyk - przechowuje produkty dodane przez użytkownika
 let koszyk = [];
+let ulubione = new Set();
+// Obrazy nie są już zapisywane; przechowujemy tylko nazwy produktów w ulubionych
 
 // Funkcja tworząca gwiazdki
 function stworzGwiazdki(ocena) {
@@ -105,6 +107,9 @@ function pokazMenu(kategoria) {
           <button class="dodaj-do-koszyka" data-nazwa="${produkt.nazwa}" data-cena="${produkt.cena}" data-kategoria="${kategoria}">
             Dodaj do koszyka
           </button>
+          <button class="wishlist-inline ${ulubione.has(produkt.nazwa) ? 'active' : ''}" data-nazwa="${produkt.nazwa}">
+            ${ulubione.has(produkt.nazwa) ? 'Usuń z ulubionych' : 'Dodaj do ulubionych'}
+          </button>
           <button class="zobacz-recenzje" data-nazwa="${produkt.nazwa}" data-kategoria="${kategoria}">
             Zobacz recenzje
           </button>
@@ -156,6 +161,17 @@ function pokazMenu(kategoria) {
     menu.remove();
     overlay.remove();
   });
+
+  // Wishlist w menu
+  const wishlistBtns = menu.querySelectorAll('.wishlist-inline');
+  wishlistBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const nazwa = this.getAttribute('data-nazwa');
+      toggleUlubione(nazwa);
+      this.classList.toggle('active');
+      this.textContent = this.classList.contains('active') ? 'Usuń z ulubionych' : 'Dodaj do ulubionych';
+    });
+  });
 }
 
 // Funkcja pokazywania recenzji
@@ -170,12 +186,7 @@ function pokazRecenzje(nazwaProduktu, kategoria) {
   }
 
   // Usuń też istniejące menu produktów jeśli jest otwarte
-  const istniejaceMenu = document.querySelector('.menu-produktow');
-  const istniejaceOverlay = document.querySelector('.menu-overlay');
-  if (istniejaceMenu && istniejaceOverlay) {
-    istniejaceMenu.remove();
-    istniejaceOverlay.remove();
-  }
+  // Pozostaw menu produktów i overlay otwarte po dodaniu do koszyka
   
   // Usuń też istniejące modalne okna koszyka
   const istniejaceKoszykModal = document.getElementById('koszyk-modal');
@@ -353,12 +364,7 @@ function dodajDoKoszyka(nazwaProduktu, cena, kategoria) {
     istniejaceModal.remove();
   }
   
-  const istniejaceMenu = document.querySelector('.menu-produktow');
-  const istniejaceOverlay = document.querySelector('.menu-overlay');
-  if (istniejaceMenu && istniejaceOverlay) {
-    istniejaceMenu.remove();
-    istniejaceOverlay.remove();
-  }
+  // Nie zamykaj menu produktów i overlay po dodaniu do koszyka
 
   const istniejącyProdukt = koszyk.find(item => item.nazwa === nazwaProduktu);
   
@@ -424,6 +430,49 @@ function aktualizujKoszyk() {
     const sumaProduktow = koszyk.reduce((sum, item) => sum + item.ilosc, 0);
     licznik.textContent = sumaProduktow;
   }
+}
+
+function aktualizujLicznikUlubionych() {
+  const licznik = document.querySelector('.ulubione-licznik');
+  if (licznik) {
+    licznik.textContent = ulubione.size;
+  }
+}
+
+// Wishlist helpers
+function wczytajUlubione() {
+  try {
+    const data = JSON.parse(localStorage.getItem('ulubione'));
+    if (Array.isArray(data)) {
+      ulubione = new Set(
+        data.map(item => (typeof item === 'string' ? item : item && item.nazwa ? item.nazwa : null)).filter(Boolean)
+      );
+    }
+  } catch (e) {}
+}
+
+function zapiszUlubione() {
+  localStorage.setItem('ulubione', JSON.stringify(Array.from(ulubione)));
+}
+
+function toggleUlubione(nazwa) {
+  if (ulubione.has(nazwa)) {
+    ulubione.delete(nazwa);
+    pokazPowiadomienie('Usunięto z ulubionych');
+  } else {
+    ulubione.add(nazwa);
+    pokazPowiadomienie('Dodano do ulubionych');
+  }
+  zapiszUlubione();
+  odswiezIkonyUlubionych();
+  aktualizujLicznikUlubionych();
+}
+
+function odswiezIkonyUlubionych() {
+  document.querySelectorAll('.wishlist-btn').forEach(btn => {
+    const nazwa = btn.getAttribute('data-nazwa');
+    btn.classList.toggle('active', ulubione.has(nazwa));
+  });
 }
 
 // Funkcja pokazywania koszyka
@@ -680,6 +729,50 @@ window.testPokazMenu = function(kategoria) {
   pokazMenu(kategoria);
 };
 
+// Dropdown menu functionality
+function initDropdownMenu() {
+  const dropdown = document.querySelector('.dropdown');
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdownMenu = document.querySelector('.dropdown-menu');
+  
+  if (!dropdown || !dropdownToggle || !dropdownMenu) {
+    console.log('Dropdown elements not found');
+    return;
+  }
+  
+  // Add click event to toggle dropdown
+  dropdownToggle.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    dropdown.classList.toggle('active');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('active');
+    }
+  });
+  
+  // Close dropdown when pressing Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      dropdown.classList.remove('active');
+    }
+  });
+  
+  // Handle dropdown menu item clicks
+  const dropdownLinks = dropdownMenu.querySelectorAll('a');
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Let the link navigate normally
+      dropdown.classList.remove('active');
+    });
+  });
+  
+  console.log('Dropdown menu initialized');
+}
+
 // Prosta funkcja testowa menu - omija sprawdzanie kategorii
 window.testSimpleMenu = function() {
   console.log('Test prostego menu...');
@@ -723,9 +816,33 @@ window.testSimpleMenu = function() {
 
 // Inicjalizacja po załadowaniu strony
 document.addEventListener('DOMContentLoaded', function() {
+  // Wczytaj ulubione
+  wczytajUlubione();
   console.log('DOM załadowany');
+  
+  // Initialize dropdown menu functionality
+  initDropdownMenu();
   console.log('Testowanie funkcji przekierowania...');
   
+  // Lazy images: add blur-in until loaded
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+  lazyImages.forEach((img) => {
+    img.classList.add('img-blur');
+    if (img.complete) {
+      // already cached
+      img.classList.remove('img-blur');
+      img.classList.add('img-loaded');
+    } else {
+      img.addEventListener('load', () => {
+        img.classList.remove('img-blur');
+        img.classList.add('img-loaded');
+      }, { once: true });
+      img.addEventListener('error', () => {
+        img.classList.remove('img-blur');
+      }, { once: true });
+    }
+  });
+
   // Załaduj dane elektroniki jeśli są dostępne
   if (typeof window.produktyElektroniki !== 'undefined') {
     produkty = {...produkty, ...window.produktyElektroniki};
@@ -804,6 +921,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Eksportuj funkcję pokazMenu do globalnego zasięgu PO załadowaniu danych
   window.pokazMenu = pokazMenu;
+  // Udostępnij scalone produkty globalnie, aby ulubione.html mogło je użyć
+  window.produkty = produkty;
+  // Eksport pomocniczy do pobrania listy ulubionych
+  window.pobierzUlubione = function() {
+    return Array.from(ulubione);
+  };
   
   // Wczytaj koszyk z localStorage
   const zapisanyKoszyk = localStorage.getItem('koszyk');
@@ -814,6 +937,28 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Dodaj event listener do przycisku koszyka
   const koszykBtn = document.querySelector('.koszyk-btn');
+  // Wstaw (jeśli brak) ikonę Ulubione do headera
+  const topContainer = document.querySelector('.top-bar .container');
+  if (topContainer && !document.querySelector('.ulubione-icon')) {
+    const btnWrap = document.createElement('div');
+    btnWrap.className = 'ulubione-icon';
+    btnWrap.innerHTML = `
+      <button class="ulubione-btn" onclick="window.location.href='ulubione.html'">
+        <span class="heart-icon">❤</span>
+        <span class="ulubione-licznik">0</span>
+      </button>
+    `;
+    // wstaw PRZED ikoną koszyka: najpierw serduszko, następnie koszyk
+    const koszykIkona = document.querySelector('.koszyk-icon');
+    if (koszykIkona && koszykIkona.parentNode === topContainer) {
+      koszykIkona.insertAdjacentElement('beforebegin', btnWrap);
+    } else {
+      topContainer.appendChild(btnWrap);
+    }
+  }
+
+  // Zainicjalizuj licznik ulubionych
+  aktualizujLicznikUlubionych();
   console.log('Przycisk koszyka znaleziony:', koszykBtn);
   if (koszykBtn) {
     koszykBtn.addEventListener('click', pokazKoszyk);
@@ -880,5 +1025,9 @@ document.addEventListener('DOMContentLoaded', function() {
     priceFilter.addEventListener('change', applyFilters);
   }
   
+
+  // Usuń przyciski ulubionych z kart produktów na podstronach
+  document.querySelectorAll('.wishlist-btn').forEach(btn => btn.remove());
+  aktualizujLicznikUlubionych();
 
 });

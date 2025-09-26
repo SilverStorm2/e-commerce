@@ -13,13 +13,20 @@
       <h1 class="shop-name">Modern Style</h1>
       <nav class="main-nav">
         <a href="index.html">Home</a>
-        <a href="moda.html">Moda</a>
-        <a href="dom.html" class="active">Dom</a>
-        <a href="sport.html">Sport</a>
-        <a href="elektronika.html">Elektronika</a>
-        <a href="uroda.html">Uroda</a>
-        <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
-        <a href="#kontakt">Kontakt</a>
+        <div class="dropdown">
+          <a href="#oferta" class="dropdown-toggle">Oferta</a>
+          <div class="dropdown-menu">
+            <a href="moda.html">Moda</a>
+            <a href="dom.html">Dom</a>
+            <a href="sport.html">Sport</a>
+            <a href="elektronika.html">Elektronika</a>
+            <a href="uroda.html">Uroda</a>
+            <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
+          </div>
+        </div>
+        <a href="ulubione.html">Ulubione</a>
+        <a href="index.html#jak-to-dziala">Jak to działa</a>
+        <a href="index.html#kontakt">Kontakt</a>
       </nav>
       <div class="koszyk-icon">
         <button class="koszyk-btn">
@@ -74,38 +81,38 @@
     <section class="products">
       <h2>Nasze propozycje dla domu</h2>
       <div class="product-grid">
-        <div class="product">
-          <img src="images/dom1salon.jpg" alt="Salon">
+        <div class="product" data-category="salon">
+          <img src="images/dom1salon.jpg" alt="Salon" loading="lazy">
           <h3>Salon</h3>
           <p>Wygodna kanapa, stolik kawowy, rośliny w donicach, ciepłe oświetlenie.</p>
           <button class="button-main" type="button" onclick="pokazMenu('salon', this)">Zobacz więcej</button>
         </div>
-        <div class="product">
-          <img src="images/dom2bedroom.jpg" alt="Sypialnia">
+        <div class="product" data-category="sypialnia">
+          <img src="images/dom2bedroom.jpg" alt="Sypialnia" loading="lazy">
           <h3>Bedroom</h3>
           <p>Pościel w przytulnych kolorach, miękkie poduszki, lampka nocna.</p>
           <button class="button-main" type="button" onclick="pokazMenu('sypialnia', this)">Zobacz więcej</button>
         </div>
-        <div class="product">
-          <img src="images/dom3kitchen.jpg" alt="Kuchnia">
+        <div class="product" data-category="kuchnia">
+          <img src="images/dom3kitchen.jpg" alt="Kuchnia" loading="lazy">
           <h3>Kitchen</h3>
           <p>Stylowe naczynia, garnki, dekoracje kuchenne.</p>
           <button class="button-main" type="button" onclick="pokazMenu('kuchnia', this)">Zobacz więcej</button>
         </div>
-        <div class="product">
-          <img src="images/dom4bathroom.jpg" alt="Łazienka">
+        <div class="product" data-category="lazienka">
+          <img src="images/dom4bathroom.jpg" alt="Łazienka" loading="lazy">
           <h3>Bathroom</h3>
           <p>Ręczniki, świece zapachowe, eleganckie pojemniki na kosmetyki.</p>
           <button class="button-main" type="button" onclick="pokazMenu('lazienka', this)">Zobacz więcej</button>
         </div>
-        <div class="product">
-          <img src="images/dom5living-room.jpg" alt="Pokój dzienny">
+        <div class="product" data-category="pokoj-dzienny">
+          <img src="images/dom5living-room.jpg" alt="Pokój dzienny" loading="lazy">
           <h3>Living-room</h3>
           <p>Obrazy, plakaty, półki na książki lub bibeloty.</p>
           <button class="button-main" type="button" onclick="pokazMenu('pokoj-dzienny', this)">Zobacz więcej</button>
         </div>
-        <div class="product">
-          <img src="images/dom6garden.jpg" alt="Ogród">
+        <div class="product" data-category="ogrod">
+          <img src="images/dom6garden.jpg" alt="Ogród" loading="lazy">
           <h3>Garden</h3>
           <p>Meble ogrodowe, lampki, rośliny w donicach.</p>
           <button class="button-main" type="button" onclick="pokazMenu('ogrod', this)">Zobacz więcej</button>
@@ -119,11 +126,11 @@
     <h2>Zainspiruj się!</h2>
     <div class="lookbook-grid">
       <div class="lookbook-item">
-        <img src="images/3-home.jpg" alt="Inspiracje domowe 1">
+        <img src="images/3-home.jpg" alt="Inspiracje domowe 1" loading="lazy">
         <p>Przytulny salon w stylu skandynawskim</p>
       </div>
       <div class="lookbook-item">
-        <img src="images/dom1salon.jpg" alt="Inspiracje domowe 2">
+        <img src="images/dom1salon.jpg" alt="Inspiracje domowe 2" loading="lazy">
         <p>Nowoczesna kuchnia z funkcjonalnym wyposażeniem</p>
       </div>
     </div>

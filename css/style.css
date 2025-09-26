@@ -42,6 +42,159 @@ body {
   color: #61dafb; /* Kolor akcentu */
 }
 
+/* Dropdown menu styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-toggle::after {
+  content: '▼';
+  margin-left: 8px;
+  font-size: 10px;
+  transition: transform 0.3s ease;
+  opacity: 0.8;
+}
+
+.dropdown:hover .dropdown-toggle::after,
+.dropdown.active .dropdown-toggle::after {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 220px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown.active .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  color: #333;
+  padding: 14px 18px;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+  margin: 0;
+  font-weight: 500;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background: linear-gradient(135deg, #61dafb, #21a1f1);
+  color: #fff;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(97, 218, 251, 0.3);
+}
+
+.dropdown-menu a:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.dropdown-menu a:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+/* Add subtle animation to dropdown items */
+.dropdown-menu a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: #61dafb;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.dropdown-menu a:hover::before {
+  transform: scaleY(1);
+}
+
+/* Add icons to dropdown menu items */
+.dropdown-menu a[href*="moda"]::after {
+  content: '👗';
+  float: right;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.dropdown-menu a[href*="dom"]::after {
+  content: '🏠';
+  float: right;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.dropdown-menu a[href*="sport"]::after {
+  content: '⚽';
+  float: right;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.dropdown-menu a[href*="elektronika"]::after {
+  content: '💻';
+  float: right;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.dropdown-menu a[href*="uroda"]::after {
+  content: '💄';
+  float: right;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.dropdown-menu a[href*="stylowa-przygoda"]::after {
+  content: '✨';
+  float: right;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.dropdown-menu a:hover::after {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
 .hero {
   background: linear-gradient(135deg, #00b894, #0984e3);
   color: #fff;
@@ -297,6 +450,32 @@ body {
   .main-nav a {
     margin: 0 10px;
   }
+  
+  /* Mobile dropdown adjustments */
+  .dropdown-menu {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-15px);
+    width: 90%;
+    max-width: 320px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+  }
+  
+  .dropdown:hover .dropdown-menu,
+  .dropdown.active .dropdown-menu {
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .dropdown-menu a {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+  
+  .dropdown-toggle {
+    padding: 10px 14px;
+  }
   .hero-content h2 {
     font-size: 36px;
   }
@@ -509,24 +688,20 @@ body {
 
 .produkt-ilosc {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .zmien-ilosc {
   background: #61dafb;
   color: #fff;
   border: none;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .zmien-ilosc:hover {
@@ -537,8 +712,6 @@ body {
   font-weight: bold;
   min-width: 30px;
   text-align: center;
-  font-size: 14px;
-  margin: 2px 0;
 }
 
 .produkt-suma {
@@ -1019,116 +1192,108 @@ body {
     opacity: 1;
   }
 }
-/* Style dla sekcji elektronika */
-.elektronika-hero {
-  background: linear-gradient(135deg, #1e3c72, #2a5298, #0f4c75);
-  position: relative;
-  overflow: hidden;
+/* Ulubione icon styling */
+.ulubione-icon {
+  margin-left: 2cm; /* 2cm distance from shopping cart */
+  display: flex !important;
+  align-items: center;
+  z-index: 1000;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
-.elektronika-hero::before {
-  content: '';
+.ulubione-btn {
+  background: #fff;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  padding: 8px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ulubione-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.heart-icon {
+  color: #e74c3c !important;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.ulubione-btn:hover .heart-icon {
+  color: #c0392b !important;
+  transform: scale(1.2);
+}
+
+.ulubione-licznik {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(173, 216, 230, 0.1) 0%, transparent 50%);
-  pointer-events: none;
+  top: -5px;
+  right: -5px;
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
-.elektronika-hero .hero-content {
-  position: relative;
-  z-index: 1;
+.ulubione-btn:hover .ulubione-licznik {
+  background: #c0392b;
+  transform: scale(1.1);
 }
 
-.elektronika-hero .button-main {
-  background: linear-gradient(90deg, #00bfff, #1e90ff, #4169e1);
-  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* Wishlist buttons in product menus */
+.wishlist-btn, .wishlist-inline {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.elektronika-hero .button-main:hover {
-  background: linear-gradient(90deg, #1e90ff, #4169e1, #0000cd);
-  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
+.wishlist-btn:hover, .wishlist-inline:hover {
+  background: #c0392b;
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
 }
 
-/* Style dla przycisków elektroniki */
-body.elektronika-page .button-main {
-  background: linear-gradient(90deg, #00bfff, #1e90ff);
-  border: 1px solid rgba(30, 144, 255, 0.3);
+.wishlist-btn.active, .wishlist-inline.active {
+  background: #27ae60;
 }
 
-body.elektronika-page .button-main:hover {
-  background: linear-gradient(90deg, #1e90ff, #4169e1);
-  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
+.wishlist-btn.active:hover, .wishlist-inline.active:hover {
+  background: #229954;
 }
 
-/* Style dla produktów elektroniki */
-body.elektronika-page .product {
-  border: 1px solid rgba(30, 144, 255, 0.2);
-  background: linear-gradient(145deg, #ffffff, #f8fbff);
-}
-
-body.elektronika-page .product:hover {
-  border-color: rgba(30, 144, 255, 0.4);
-  box-shadow: 0 8px 25px rgba(30, 144, 255, 0.15);
-}
-
-body.elektronika-page .product h3 {
-  color: #1e3c72;
-}
-
-/* Style dla filtrów elektroniki */
-body.elektronika-page .filters {
-  background: linear-gradient(135deg, #f8fbff, #e6f3ff);
-  border: 1px solid rgba(30, 144, 255, 0.2);
-}
-
-body.elektronika-page .filters select,
-body.elektronika-page .filters input {
-  border: 1px solid rgba(30, 144, 255, 0.3);
-  background: rgba(255, 255, 255, 0.9);
-}
-
-body.elektronika-page .filters select:focus,
-body.elektronika-page .filters input:focus {
-  border-color: #1e90ff;
-  box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
-}
-
-/* Style dla menu produktów elektroniki */
-body.elektronika-page .menu-produktow {
-  background: linear-gradient(145deg, #ffffff, #f0f8ff);
-  border: 2px solid rgba(30, 144, 255, 0.3);
-}
-
-body.elektronika-page .menu-produktow h3 {
-  color: #1e3c72;
-  background: linear-gradient(90deg, #e6f3ff, #f0f8ff);
-  border-bottom: 2px solid rgba(30, 144, 255, 0.2);
-}
-
-body.elektronika-page .produkt-w-menu {
-  border-bottom: 1px solid rgba(30, 144, 255, 0.1);
-}
-
-body.elektronika-page .produkt-w-menu:hover {
-  background: linear-gradient(145deg, #f8fbff, #e6f3ff);
-}
-
-body.elektronika-page .dodaj-do-koszyka {
-  background: linear-gradient(90deg, #00bfff, #1e90ff);
-  border: 1px solid rgba(30, 144, 255, 0.3);
-}
-
-body.elektronika-page .dodaj-do-koszyka:hover {
-  background: linear-gradient(90deg, #1e90ff, #4169e1);
-  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
+.wishlist-btn i, .wishlist-inline i {
+  color: #fff;
+  margin-right: 5px;
 }
 
 /* Responsive dla koszyka i menu */
@@ -1140,8 +1305,6 @@ body.elektronika-page .dodaj-do-koszyka:hover {
   }
   .produkt-ilosc {
     align-self: center;
-    flex-direction: column;
-    gap: 5px;
   }
   .produkt-suma {
     align-self: flex-end;
@@ -1165,6 +1328,27 @@ body.elektronika-page .dodaj-do-koszyka:hover {
     right: 10px;
     left: 10px;
     top: 10px;
+  }
+  
+  /* Mobile ulubione button */
+  .ulubione-icon {
+    margin-left: 1cm; /* Reduced spacing on mobile */
+  }
+  
+  .ulubione-btn {
+    min-width: 35px;
+    min-height: 35px;
+    padding: 6px;
+  }
+  
+  .heart-icon {
+    font-size: 18px;
+  }
+  
+  .ulubione-licznik {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
   }
 }
 

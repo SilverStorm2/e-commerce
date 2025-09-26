@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ulubione - Modern Style</title>
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Ustaw stopkę przy dole widoku, nawet przy krótkiej treści */
+    html, body { height: 100%; }
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+    .main-content { flex: 1; }
+    
+    /* Style for clear button */
+    #wyczysc-ulubione {
+      background: #e74c3c !important;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    
+    #wyczysc-ulubione:hover {
+      background: #c0392b !important;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+    }
+    
+    #wyczysc-ulubione i {
+      margin-right: 8px;
+    }
+    
+    /* Clear button container */
+    #clear-button-container {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="container">
+      <h1 class="shop-name">Modern Style</h1>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+          <a href="#oferta" class="dropdown-toggle">Oferta</a>
+          <div class="dropdown-menu">
+            <a href="moda.html">Moda</a>
+            <a href="dom.html">Dom</a>
+            <a href="sport.html">Sport</a>
+            <a href="elektronika.html">Elektronika</a>
+            <a href="uroda.html">Uroda</a>
+            <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
+          </div>
+        </div>
+        <a href="ulubione.html" class="active">Ulubione</a>
+        <a href="index.html#jak-to-dziala">Jak to działa</a>
+        <a href="index.html#kontakt">Kontakt</a>
+      </nav>
+      <div class="koszyk-icon">
+        <button class="koszyk-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="koszyk-licznik">0</span>
+          <span class="koszyk-backup">🛒</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Ulubione</h2>
+      <p>Twoje zapisane produkty w jednym miejscu.</p>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <section class="products" id="sekcja-ulubione">
+      <h2>Lista ulubionych</h2>
+      <div id="ulubione-empty" class="koszyk-pusty" style="display:none;">
+        <h3>Brak ulubionych</h3>
+        <p>Dodaj produkty do ulubionych, aby szybko do nich wracać.</p>
+      </div>
+      <div class="koszyk-produkty" id="ulubione-grid"></div>
+      <div id="clear-button-container" style="display: none;">
+        <button id="wyczysc-ulubione" class="button-main">
+          <i class="fas fa-trash"></i> Wyczyść listę
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom-bar">
+    <div class="container">
+      <span>2025 &copy; Modern Style</span>
+      <div class="social-icons">
+        <a href="#" title="Facebook" class="icon-link" aria-label="Facebook">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <path d="M18 25V17.5H20.5L21 14.5H18V13C18 12.17 18.17 11.5 19.33 11.5H21V9C20.67 9 19.67 9 18.67 9C16.33 9 15 10.33 15 12.67V14.5H13V17.5H15V25H18Z" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#" title="Instagram" class="icon-link" aria-label="Instagram">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <rect x="10" y="10" width="12" height="12" rx="4" stroke="#fff" stroke-width="2"/>
+            <circle cx="16" cy="16" r="3" stroke="#fff" stroke-width="2"/>
+            <circle cx="21" cy="11" r="1" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#" title="Twitter" class="icon-link" aria-label="Twitter">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <path d="M23 13.5C22.4 13.8 21.8 14 21.1 14.1C21.8 13.7 22.3 13.1 22.5 12.3C21.9 12.7 21.2 13 20.4 13.1C19.8 12.5 18.9 12.5 18.2 13.1C17.5 13.7 17.3 14.7 17.7 15.5C15.9 15.4 14.3 14.6 13.2 13.3C12.8 13.9 13 14.7 13.6 15.1C13.1 15.1 12.7 15 12.3 14.8C12.3 15.5 12.8 16.1 13.5 16.2C13.1 16.3 12.7 16.3 12.3 16.2C12.6 16.8 13.2 17.2 13.9 17.2C13.3 17.7 12.5 17.9 11.7 17.8C12.5 18.3 13.4 18.5 14.3 18.5C18.2 18.5 20.4 15.2 20.4 12.6C20.4 12.5 20.4 12.4 20.4 12.3C21 12 21.6 11.6 22 11.1C21.5 11.3 21 11.5 20.4 11.6C21 11.2 21.5 10.6 21.7 9.9C21.2 10.2 20.6 10.4 20 10.5C19.5 10.1 18.8 10 18.2 10.3C17.6 10.6 17.2 11.2 17.2 11.9C17.2 12.1 17.2 12.3 17.3 12.5C15.7 12.4 14.2 11.7 13.1 10.6C12.7 11.2 12.9 12 13.5 12.4C13.1 12.4 12.7 12.3 12.3 12.1C12.3 12.8 12.8 13.4 13.5 13.5C13.1 13.6 12.7 13.6 12.3 13.5C12.6 14.1 13.2 14.5 13.9 14.5C13.3 15 12.5 15.2 11.7 15.1C12.5 15.6 13.4 15.8 14.3 15.8C18.2 15.8 20.4 12.5 20.4 9.9C20.4 9.8 20.4 9.7 20.4 9.6C21 9.3 21.6 8.9 22 8.4Z" fill="#fff"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Załaduj dane wszystkich kategorii, aby można było zrekonstruować produkty po nazwie -->
+  <script src="js/products/elektronika.js"></script>
+  <script>if (typeof elektronika !== 'undefined') { window.produktyElektroniki = elektronika; }</script>
+  <script src="js/products/moda.js"></script>
+  <script>if (typeof moda !== 'undefined') { window.produktyMody = moda; }</script>
+  <script src="js/products/dom.js"></script>
+  <script>if (typeof dom !== 'undefined') { window.produktyDomu = dom; }</script>
+  <script src="js/products/sport.js"></script>
+  <script>if (typeof sport !== 'undefined') { window.produktySportu = sport; }</script>
+  <script src="js/products/uroda.js"></script>
+  <script>if (typeof uroda !== 'undefined') { window.produktyUrody = uroda; }</script>
+  <script src="js/products/stylowa-przygoda.js"></script>
+  <script>if (typeof stylowaPrzygoda !== 'undefined') { window.produktyStylowejPrzygody = stylowaPrzygoda; }</script>
+
+  <script src="js/script.js?v=6"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Spróbuj od razu i po pełnym załadowaniu (fallback)
+      renderUlubione();
+      window.addEventListener('load', renderUlubione);
+      setTimeout(renderUlubione, 200);
+
+      function znajdzProduktPoNazwie(nazwa) {
+        if (!window.produkty) return null;
+        for (const [kat, lista] of Object.entries(window.produkty)) {
+          const p = (lista || []).find(x => x.nazwa === nazwa);
+          if (p) return { produkt: p, kategoria: kat };
+        }
+        return null;
+      }
+
+      function renderUlubione() {
+        console.log('renderUlubione called');
+        const grid = document.getElementById('ulubione-grid');
+        const empty = document.getElementById('ulubione-empty');
+        const clearContainer = document.getElementById('clear-button-container');
+        grid.innerHTML = '';
+
+        let ul = [];
+        try {
+          // Always check localStorage first for consistency
+          const localData = JSON.parse(localStorage.getItem('ulubione')) || [];
+          console.log('localStorage data:', localData);
+          
+          // If window.pobierzUlubione exists, use it but log both
+          if (typeof window.pobierzUlubione === 'function') {
+            const appData = window.pobierzUlubione();
+            console.log('window.pobierzUlubione():', appData);
+            console.log('window.ulubione Set:', window.ulubione);
+            
+            // Use localStorage data for consistency
+            ul = localData;
+            console.log('Using localStorage data for consistency');
+          } else {
+            ul = localData;
+            console.log('Using localStorage data (no app API)');
+          }
+        } catch(e) { 
+          console.log('Error loading favorites:', e);
+          ul = []; 
+        }
+
+        if (!ul.length) {
+          console.log('No favorites found, showing empty state');
+          empty.style.display = 'block';
+          if (clearContainer) clearContainer.style.display = 'none';
+          return;
+        }
+        
+        console.log('Found favorites, rendering', ul.length, 'items');
+        empty.style.display = 'none';
+        if (clearContainer) clearContainer.style.display = 'block';
+
+        ul.forEach(entry => {
+          const nazwa = typeof entry === 'string' ? entry : entry.nazwa;
+          const found = znajdzProduktPoNazwie(nazwa);
+          const card = document.createElement('div');
+          card.className = 'koszyk-produkt';
+          if (found) {
+            const { produkt, kategoria } = found;
+            card.innerHTML = `
+              <div class="produkt-info">
+                <h4>${produkt.nazwa}</h4>
+                <p>${produkt.opis || ''}</p>
+              </div>
+              <div class="cena-calkowita">${(produkt.cena || 0).toFixed(2)} zł</div>
+              <div class="przyciski-produktu" style="min-width:auto; gap:10px;">
+                <button class="dodaj-do-koszyka" data-akcja="dodaj" data-nazwa="${produkt.nazwa}" data-cena="${produkt.cena}" data-kategoria="${kategoria}">Dodaj do koszyka</button>
+                <button class="usun-produkt" data-akcja="usun" data-nazwa="${produkt.nazwa}">Usuń</button>
+              </div>
+            `;
+          } else {
+            // Fallback: produkt nieodnaleziony w zestawie danych – nadal pokaż przycisk dodania do koszyka
+            card.innerHTML = `
+              <div class="produkt-info">
+                <h4>${nazwa}</h4>
+              </div>
+              <div class="cena-calkowita"></div>
+              <div class="przyciski-produktu" style="min-width:auto; gap:10px;">
+                <button class="dodaj-do-koszyka" data-akcja="dodaj" data-nazwa="${nazwa}" data-cena="0" data-kategoria="">Dodaj do koszyka</button>
+                <button class="usun-produkt" data-akcja="usun" data-nazwa="${nazwa}">Usuń</button>
+              </div>
+            `;
+          }
+          grid.appendChild(card);
+        });
+
+        // Use a more robust approach - remove all existing listeners and add only one
+        // Prevent multiple event handlers by checking if already set
+        if (!grid.hasAttribute('data-onclick-set')) {
+          grid.onclick = function(e) {
+          const btn = e.target.closest('button');
+          if (!btn) return;
+          const akcja = btn.getAttribute('data-akcja');
+          const nazwa = btn.getAttribute('data-nazwa');
+          console.log('Button clicked:', akcja, nazwa);
+
+          if (akcja === 'dodaj') {
+            const cena = parseFloat(btn.getAttribute('data-cena')) || 0;
+            const kat = btn.getAttribute('data-kategoria') || '';
+            console.log('Adding to cart:', nazwa, cena, kat);
+            
+            if (typeof window.dodajDoKoszyka === 'function') {
+              // Check current cart state before adding
+              const currentCart = JSON.parse(localStorage.getItem('koszyk') || '[]');
+              console.log('Cart before adding:', currentCart);
+              
+              window.dodajDoKoszyka(nazwa, cena, kat);
+              
+              // Check cart state after adding
+              setTimeout(() => {
+                const newCart = JSON.parse(localStorage.getItem('koszyk') || '[]');
+                console.log('Cart after adding:', newCart);
+              }, 100);
+              
+              // Update cart counter in header
+              if (typeof window.aktualizujLicznikKoszyka === 'function') {
+                window.aktualizujLicznikKoszyka();
+              }
+              
+              // Show success notification
+              if (typeof window.pokazPowiadomienie === 'function') {
+                window.pokazPowiadomienie('Dodano do koszyka');
+              }
+            } else {
+              console.error('window.dodajDoKoszyka function not found');
+            }
+          } else if (akcja === 'usun') {
+            console.log('Removing item:', nazwa);
+
+            // Remove from localStorage
+            const raw = localStorage.getItem('ulubione');
+            let arr = [];
+            try { arr = JSON.parse(raw) || []; } catch(e) { arr = []; }
+            console.log('Before removal:', arr);
+            
+            // Obsłuż format: ["nazwa", ...] lub [{nazwa, image}, ...]
+            arr = arr.filter(item => (typeof item === 'string') ? item !== nazwa : item.nazwa !== nazwa);
+            localStorage.setItem('ulubione', JSON.stringify(arr));
+            console.log('After removal:', arr);
+            
+            // Also remove from main app's favorites system if available
+            if (typeof window.ulubione !== 'undefined' && window.ulubione.delete) {
+              window.ulubione.delete(nazwa);
+              console.log('Removed from window.ulubione Set');
+            }
+            
+            // Force update the main app's ulubione Set from localStorage
+            if (typeof window.wczytajUlubione === 'function') {
+              window.wczytajUlubione();
+              console.log('Reloaded ulubione Set from localStorage');
+            }
+            
+            // Force update the pobierzUlubione function if it exists
+            if (typeof window.pobierzUlubione === 'function') {
+              // The function should read from window.ulubione, so it should be updated now
+              console.log('window.pobierzUlubione should now return updated data');
+            }
+            
+            // Update favorites counter in header
+            if (typeof window.aktualizujLicznikUlubionych === 'function') {
+              console.log('Updating favorites counter in header');
+              window.aktualizujLicznikUlubionych();
+            } else {
+              console.log('window.aktualizujLicznikUlubionych function not found');
+            }
+            
+            // Manual update of favorites counter as backup
+            setTimeout(() => {
+              const licznik = document.querySelector('.ulubione-licznik');
+              if (licznik) {
+                const currentFavorites = JSON.parse(localStorage.getItem('ulubione') || '[]');
+                licznik.textContent = currentFavorites.length;
+                console.log('Manually updated favorites counter to:', currentFavorites.length);
+              }
+            }, 100);
+            
+            if (typeof window.pokazPowiadomienie === 'function') {
+              window.pokazPowiadomienie('Usunięto z ulubionych');
+            }
+            
+            // Immediately remove the item from the DOM
+            const btn = e.target.closest('button');
+            const card = btn.closest('.koszyk-produkt');
+            if (card) {
+              card.remove();
+              console.log('Removed item from DOM');
+            }
+            
+            // Check if list is now empty
+            const grid = document.getElementById('ulubione-grid');
+            const remainingItems = grid.querySelectorAll('.koszyk-produkt');
+            if (remainingItems.length === 0) {
+              console.log('No items left, showing empty state');
+              const empty = document.getElementById('ulubione-empty');
+              const clearContainer = document.getElementById('clear-button-container');
+              if (empty) empty.style.display = 'block';
+              if (clearContainer) clearContainer.style.display = 'none';
+            }
+            
+            // Also call renderUlubione as backup - force complete rebuild
+            setTimeout(() => {
+              console.log('Backup re-render...');
+              // Clear everything first
+              const grid = document.getElementById('ulubione-grid');
+              const empty = document.getElementById('ulubione-empty');
+              const clearContainer = document.getElementById('clear-button-container');
+              
+              grid.innerHTML = '';
+              empty.style.display = 'none';
+              if (clearContainer) clearContainer.style.display = 'none';
+              
+              // Force complete re-render
+              renderUlubione();
+            }, 300);
+          }
+        };
+        grid.setAttribute('data-onclick-set', 'true');
+        }
+
+        // Event listener for clear button (only add if not already added)
+        const clearBtn = document.getElementById('wyczysc-ulubione');
+        if (clearBtn && !clearBtn.hasAttribute('data-listener-added')) {
+          clearBtn.addEventListener('click', function() {
+            if (confirm('Czy na pewno chcesz wyczyścić całą listę ulubionych?')) {
+              // Clear localStorage
+              localStorage.removeItem('ulubione');
+              
+              // Clear from main app if available
+              if (typeof window.ulubione !== 'undefined') {
+                window.ulubione.clear();
+              }
+              
+              // Update favorites counter in header
+              if (typeof window.aktualizujLicznikUlubionych === 'function') {
+                window.aktualizujLicznikUlubionych();
+              }
+              
+              // Manual update of favorites counter as backup
+              setTimeout(() => {
+                const licznik = document.querySelector('.ulubione-licznik');
+                if (licznik) {
+                  licznik.textContent = '0';
+                  console.log('Manually updated favorites counter to 0');
+                }
+              }, 100);
+              
+              // Show notification
+              if (typeof window.pokazPowiadomienie === 'function') {
+                window.pokazPowiadomienie('Lista ulubionych została wyczyszczona');
+              }
+              
+              // Re-render the page
+              renderUlubione();
+            }
+          });
+          clearBtn.setAttribute('data-listener-added', 'true');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+
