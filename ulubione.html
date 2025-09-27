@@ -11,24 +11,24 @@
     html, body { height: 100%; }
     body { min-height: 100vh; display: flex; flex-direction: column; }
     .main-content { flex: 1; }
-    
+
     /* Style for clear button */
     #wyczysc-ulubione {
       background: #e74c3c !important;
       border: none;
       transition: all 0.3s ease;
     }
-    
+
     #wyczysc-ulubione:hover {
       background: #c0392b !important;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
     }
-    
+
     #wyczysc-ulubione i {
       margin-right: 8px;
     }
-    
+
     /* Clear button container */
     #clear-button-container {
       text-align: center;
@@ -59,7 +59,7 @@
         <a href="index.html#kontakt">Kontakt</a>
       </nav>
       <div class="koszyk-icon">
-        <button class="koszyk-btn">
+        <button type="button" class="koszyk-btn">
           <i class="fas fa-shopping-cart"></i>
           <span class="koszyk-licznik">0</span>
           <span class="koszyk-backup">🛒</span>
@@ -78,13 +78,13 @@
   <main class="main-content">
     <section class="products" id="sekcja-ulubione">
       <h2>Lista ulubionych</h2>
-      <div id="ulubione-empty" class="koszyk-pusty" style="display:none;">
+      <div id="ulubione-empty" class="koszyk-pusty hidden">
         <h3>Brak ulubionych</h3>
         <p>Dodaj produkty do ulubionych, aby szybko do nich wracać.</p>
       </div>
       <div class="koszyk-produkty" id="ulubione-grid"></div>
-      <div id="clear-button-container" style="display: none;">
-        <button id="wyczysc-ulubione" class="button-main">
+      <div id="clear-button-container" class="hidden">
+        <button type="button" id="wyczysc-ulubione" class="button-main">
           <i class="fas fa-trash"></i> Wyczyść listę
         </button>
       </div>
@@ -162,13 +162,13 @@
           // Always check localStorage first for consistency
           const localData = JSON.parse(localStorage.getItem('ulubione')) || [];
           console.log('localStorage data:', localData);
-          
+
           // If window.pobierzUlubione exists, use it but log both
           if (typeof window.pobierzUlubione === 'function') {
             const appData = window.pobierzUlubione();
             console.log('window.pobierzUlubione():', appData);
             console.log('window.ulubione Set:', window.ulubione);
-            
+
             // Use localStorage data for consistency
             ul = localData;
             console.log('Using localStorage data for consistency');
@@ -176,9 +176,9 @@
             ul = localData;
             console.log('Using localStorage data (no app API)');
           }
-        } catch(e) { 
+        } catch(e) {
           console.log('Error loading favorites:', e);
-          ul = []; 
+          ul = [];
         }
 
         if (!ul.length) {
@@ -187,7 +187,7 @@
           if (clearContainer) clearContainer.style.display = 'none';
           return;
         }
-        
+
         console.log('Found favorites, rendering', ul.length, 'items');
         empty.style.display = 'none';
         if (clearContainer) clearContainer.style.display = 'block';
@@ -240,25 +240,25 @@
             const cena = parseFloat(btn.getAttribute('data-cena')) || 0;
             const kat = btn.getAttribute('data-kategoria') || '';
             console.log('Adding to cart:', nazwa, cena, kat);
-            
+
             if (typeof window.dodajDoKoszyka === 'function') {
               // Check current cart state before adding
               const currentCart = JSON.parse(localStorage.getItem('koszyk') || '[]');
               console.log('Cart before adding:', currentCart);
-              
+
               window.dodajDoKoszyka(nazwa, cena, kat);
-              
+
               // Check cart state after adding
               setTimeout(() => {
                 const newCart = JSON.parse(localStorage.getItem('koszyk') || '[]');
                 console.log('Cart after adding:', newCart);
               }, 100);
-              
+
               // Update cart counter in header
               if (typeof window.aktualizujLicznikKoszyka === 'function') {
                 window.aktualizujLicznikKoszyka();
               }
-              
+
               // Show success notification
               if (typeof window.pokazPowiadomienie === 'function') {
                 window.pokazPowiadomienie('Dodano do koszyka');
@@ -274,30 +274,30 @@
             let arr = [];
             try { arr = JSON.parse(raw) || []; } catch(e) { arr = []; }
             console.log('Before removal:', arr);
-            
+
             // Obsłuż format: ["nazwa", ...] lub [{nazwa, image}, ...]
             arr = arr.filter(item => (typeof item === 'string') ? item !== nazwa : item.nazwa !== nazwa);
             localStorage.setItem('ulubione', JSON.stringify(arr));
             console.log('After removal:', arr);
-            
+
             // Also remove from main app's favorites system if available
             if (typeof window.ulubione !== 'undefined' && window.ulubione.delete) {
               window.ulubione.delete(nazwa);
               console.log('Removed from window.ulubione Set');
             }
-            
+
             // Force update the main app's ulubione Set from localStorage
             if (typeof window.wczytajUlubione === 'function') {
               window.wczytajUlubione();
               console.log('Reloaded ulubione Set from localStorage');
             }
-            
+
             // Force update the pobierzUlubione function if it exists
             if (typeof window.pobierzUlubione === 'function') {
               // The function should read from window.ulubione, so it should be updated now
               console.log('window.pobierzUlubione should now return updated data');
             }
-            
+
             // Update favorites counter in header
             if (typeof window.aktualizujLicznikUlubionych === 'function') {
               console.log('Updating favorites counter in header');
@@ -305,7 +305,7 @@
             } else {
               console.log('window.aktualizujLicznikUlubionych function not found');
             }
-            
+
             // Manual update of favorites counter as backup
             setTimeout(() => {
               const licznik = document.querySelector('.ulubione-licznik');
@@ -315,11 +315,11 @@
                 console.log('Manually updated favorites counter to:', currentFavorites.length);
               }
             }, 100);
-            
+
             if (typeof window.pokazPowiadomienie === 'function') {
               window.pokazPowiadomienie('Usunięto z ulubionych');
             }
-            
+
             // Immediately remove the item from the DOM
             const btn = e.target.closest('button');
             const card = btn.closest('.koszyk-produkt');
@@ -327,7 +327,7 @@
               card.remove();
               console.log('Removed item from DOM');
             }
-            
+
             // Check if list is now empty
             const grid = document.getElementById('ulubione-grid');
             const remainingItems = grid.querySelectorAll('.koszyk-produkt');
@@ -338,7 +338,7 @@
               if (empty) empty.style.display = 'block';
               if (clearContainer) clearContainer.style.display = 'none';
             }
-            
+
             // Also call renderUlubione as backup - force complete rebuild
             setTimeout(() => {
               console.log('Backup re-render...');
@@ -346,11 +346,11 @@
               const grid = document.getElementById('ulubione-grid');
               const empty = document.getElementById('ulubione-empty');
               const clearContainer = document.getElementById('clear-button-container');
-              
+
               grid.innerHTML = '';
               empty.style.display = 'none';
               if (clearContainer) clearContainer.style.display = 'none';
-              
+
               // Force complete re-render
               renderUlubione();
             }, 300);
@@ -366,17 +366,17 @@
             if (confirm('Czy na pewno chcesz wyczyścić całą listę ulubionych?')) {
               // Clear localStorage
               localStorage.removeItem('ulubione');
-              
+
               // Clear from main app if available
               if (typeof window.ulubione !== 'undefined') {
                 window.ulubione.clear();
               }
-              
+
               // Update favorites counter in header
               if (typeof window.aktualizujLicznikUlubionych === 'function') {
                 window.aktualizujLicznikUlubionych();
               }
-              
+
               // Manual update of favorites counter as backup
               setTimeout(() => {
                 const licznik = document.querySelector('.ulubione-licznik');
@@ -385,12 +385,12 @@
                   console.log('Manually updated favorites counter to 0');
                 }
               }, 100);
-              
+
               // Show notification
               if (typeof window.pokazPowiadomienie === 'function') {
                 window.pokazPowiadomienie('Lista ulubionych została wyczyszczona');
               }
-              
+
               // Re-render the page
               renderUlubione();
             }

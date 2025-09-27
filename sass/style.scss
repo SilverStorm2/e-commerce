@@ -41,6 +41,115 @@ body {
   color: #61dafb; /* Kolor akcentu */
 }
 
+/* Dropdown menu styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 1000; /* Upewnij się, że dropdown jest nad innymi elementami */
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  content: '▼';
+  font-size: 12px;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown.active .dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  z-index: 1001; /* Wyższy z-index niż dropdown */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  display: block; /* Upewnij się, że menu jest wyświetlane */
+  margin-top: 5px; /* Dodaj mały odstęp */
+}
+
+.dropdown.active .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  display: block; /* Upewnij się, że menu jest widoczne */
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* Zapobiegaj zawijaniu tekstu */
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f8f9fa;
+  color: #61dafb;
+}
+
+/* Responsive dropdown menu */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+    margin-top: 0;
+  }
+  
+  .dropdown.active .dropdown-menu {
+    transform: translate(-50%, -50%);
+  }
+
+  .ulubione-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .heart-icon {
+    font-size: 14px;
+  }
+
+  .ulubione-licznik {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+
+  .wishlist-inline {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .wishlist-inline::before {
+    font-size: 14px;
+  }
+}
+
+
 .hero {
   background: linear-gradient(135deg, #00b894, #0984e3);
   color: #fff;
@@ -316,6 +425,123 @@ body {
       flex-direction: column;
       align-items: center;
   }
+}
+
+/* Ulubione styles */
+.ulubione-icon {
+  margin-left: 20px;
+  display: flex !important;
+  align-items: center;
+}
+
+.ulubione-btn {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 20px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.ulubione-btn:hover {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: #ff6b6b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.heart-icon {
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.ulubione-btn:hover .heart-icon {
+  transform: scale(1.2);
+  animation: heartbeat 0.6s ease-in-out;
+}
+
+.ulubione-licznik {
+  background: #ff6b6b;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 20px;
+}
+
+.ulubione-btn:hover .ulubione-licznik {
+  background: #e74c3c;
+  transform: scale(1.1);
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1.2); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1.2); }
+}
+
+/* Stylizacja przycisku "Dodaj do ulubionych" */
+.wishlist-inline {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ff6b6b;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wishlist-inline::before {
+  content: '❤';
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.wishlist-inline:hover {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: #ff6b6b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.wishlist-inline:hover::before {
+  transform: scale(1.2);
+  animation: heartbeat 0.6s ease-in-out;
+}
+
+.wishlist-inline.active {
+  background: #ff6b6b;
+  border-color: #ff6b6b;
+  color: #fff;
+}
+
+.wishlist-inline.active::before {
+  content: '💔';
+}
+
+.wishlist-inline.active:hover {
+  background: #e74c3c;
+  border-color: #e74c3c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
 }
 
 /* Koszyk styles */

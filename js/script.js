@@ -298,24 +298,24 @@ function pokazRecenzje(nazwaProduktu, kategoria) {
     
     if (ocena && komentarz) {
       // Dodaj nową recenzję
-    const nowaRecenzja = {
-      uzytkownik: 'Użytkownik',
+      const nowaRecenzja = {
+        uzytkownik: 'Użytkownik',
         ocena: ocena,
-      komentarz: komentarz,
-      data: new Date().toISOString().split('T')[0]
-    };
+        komentarz: komentarz,
+        data: new Date().toISOString().split('T')[0]
+      };
 
-    produkt.recenzje.push(nowaRecenzja);
+      produkt.recenzje.push(nowaRecenzja);
     
-    // Aktualizuj średnią ocenę
-    const sumaOcen = produkt.recenzje.reduce((sum, r) => sum + r.ocena, 0);
-    produkt.ocena = sumaOcen / produkt.recenzje.length;
-    produkt.liczbaOcen = produkt.recenzje.length;
+      // Aktualizuj średnią ocenę
+      const sumaOcen = produkt.recenzje.reduce((sum, r) => sum + r.ocena, 0);
+      produkt.ocena = sumaOcen / produkt.recenzje.length;
+      produkt.liczbaOcen = produkt.recenzje.length;
 
       // Zamknij modal i pokaż ponownie z nową recenzją
-    modal.remove();
+      modal.remove();
       pokazRecenzje(nazwaProduktu, kategoria);
-  }
+    }
   });
 }
 
@@ -351,14 +351,14 @@ function pobierzNazweKategorii(kategoria) {
 }
 
 // Funkcja pobierania kategorii produktu
-function pobierzKategorie(nazwaProduktu) {
-  for (const [kategoria, produkty] of Object.entries(produkty)) {
-    if (produkty.find(p => p.nazwa === nazwaProduktu)) {
-      return kategoria;
-    }
-  }
-  return null;
-}
+// function pobierzKategorie(nazwaProduktu) {
+//   for (const [kategoria, produkty] of Object.entries(produkty)) {
+//     if (produkty.find(p => p.nazwa === nazwaProduktu)) {
+//       return kategoria;
+//     }
+//   }
+//   return null;
+// }
 
 // Funkcja dodawania do koszyka
 function dodajDoKoszyka(nazwaProduktu, cena, kategoria) {
@@ -458,7 +458,9 @@ function wczytajUlubione() {
         data.map(item => (typeof item === 'string' ? item : item && item.nazwa ? item.nazwa : null)).filter(Boolean)
       );
     }
-  } catch (e) {}
+  } catch (e) {
+    console.warn('Błąd podczas ładowania ulubionych:', e);
+  }
 }
 
 function zapiszUlubione() {
@@ -557,7 +559,7 @@ function pokazKoszyk() {
           <button class="usun-produkt" data-index="${index}">Usuń</button>
       </div>
     `;
-  });
+    });
   
     modalHTML += '</div>';
     
@@ -659,9 +661,9 @@ function pokazKoszyk() {
 
 // Funkcja czyszczenia koszyka
 function wyczyscKoszyk() {
-    koszyk = [];
+  koszyk = [];
   localStorage.setItem('koszyk', JSON.stringify(koszyk));
-    aktualizujKoszyk();
+  aktualizujKoszyk();
   
   // Zaktualizuj modal koszyka zamiast go pokazywać ponownie
   const modal = document.getElementById('koszyk-modal');
@@ -778,6 +780,12 @@ function initDropdownMenu() {
   const dropdownToggle = document.querySelector('.dropdown-toggle');
   const dropdownMenu = document.querySelector('.dropdown-menu');
   
+  console.log('Dropdown elements found:', {
+    dropdown: !!dropdown,
+    dropdownToggle: !!dropdownToggle,
+    dropdownMenu: !!dropdownMenu
+  });
+  
   if (!dropdown || !dropdownToggle || !dropdownMenu) {
     console.log('Dropdown elements not found');
     return;
@@ -807,7 +815,7 @@ function initDropdownMenu() {
   // Handle dropdown menu item clicks
   const dropdownLinks = dropdownMenu.querySelectorAll('a');
   dropdownLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function() {
       // Let the link navigate normally
       dropdown.classList.remove('active');
     });
@@ -1009,6 +1017,7 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM załadowany');
   
   // Initialize dropdown menu functionality
+  console.log('Inicjalizacja dropdown menu...');
   initDropdownMenu();
   console.log('Testowanie funkcji przekierowania...');
   
