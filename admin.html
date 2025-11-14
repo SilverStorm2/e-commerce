@@ -215,7 +215,39 @@
   </style>
 </head>
 <body>
-  <div class="admin-container">
+  <header class="top-bar">
+    <div class="container">
+      <h1 class="shop-name">Modern Style</h1>
+      <nav class="main-nav">
+        <a href="#home">Home</a>
+        <div class="dropdown">
+          <a href="#oferta" class="dropdown-toggle">Oferta</a>
+          <div class="dropdown-menu">
+            <a href="moda.html">Moda</a>
+            <a href="dom.html">Dom</a>
+            <a href="sport.html">Sport</a>
+            <a href="elektronika.html">Elektronika</a>
+            <a href="uroda.html">Uroda</a>
+            <a href="stylowa-przygoda.html">Stylowa Przygoda</a>
+          </div>
+        </div>
+        <a href="ulubione.html">Ulubione</a>
+        <a href="index.html#jak-to-dziala">Jak to działa</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="admin.html" class="admin-link active">Admin</a>
+      </nav>
+      <div class="koszyk-icon">
+        <button type="button" class="koszyk-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="koszyk-licznik">0</span>
+          <span class="koszyk-backup">🛒</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="admin-container">
     <!-- Header -->
     <div class="admin-header">
       <h1><i class="fas fa-cog"></i> Panel Administracyjny</h1>
@@ -450,8 +482,38 @@
         </button>
       </form>
     </div>
-  </div>
+  </main>
 
+  <footer class="bottom-bar">
+    <div class="container">
+      <span>2025 &copy; Modern Style</span>
+      <div class="social-icons">
+        <a href="#" title="Facebook" class="icon-link" aria-label="Facebook">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <path d="M18 25V17.5H20.5L21 14.5H18V13C18 12.17 18.17 11.5 19.33 11.5H21V9C20.67 9 19.67 9 18.67 9C16.33 9 15 10.33 15 12.67V14.5H13V17.5H15V25H18Z" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#" title="Instagram" class="icon-link" aria-label="Instagram">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <rect x="10" y="10" width="12" height="12" rx="4" stroke="#fff" stroke-width="2"/>
+            <circle cx="16" cy="16" r="3" stroke="#fff" stroke-width="2"/>
+            <circle cx="21" cy="11" r="1" fill="#fff"/>
+          </svg>
+        </a>
+        <a href="#" title="Twitter" class="icon-link" aria-label="Twitter">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <circle cx="16" cy="16" r="15" stroke="#fff" stroke-width="2" fill="#1a2236"/>
+            <path d="M23 13.5C22.4 13.8 21.8 14 21.1 14.1C21.8 13.7 22.3 13.1 22.5 12.3C21.9 12.7 21.2 13 20.4 13.1C19.8 12.5 18.9 12.5 18.2 13.1C17.5 13.7 17.3 14.7 17.7 15.5C15.9 15.4 14.3 14.6 13.2 13.3C12.8 13.9 13 14.7 13.6 15.1C13.1 15.1 12.7 15 12.3 14.8C12.3 15.5 12.8 16.1 13.5 16.2C13.1 16.3 12.7 16.3 12.3 16.2C12.6 16.8 13.2 17.2 13.9 17.2C13.3 17.7 12.5 17.9 11.7 17.8C12.5 18.3 13.4 18.5 14.3 18.5C18.2 18.5 20.4 15.2 20.4 12.6C20.4 12.5 20.4 12.4 20.4 12.3C21 12 21.6 11.6 22 11.1C21.5 11.3 21 11.5 20.4 11.6C21 11.2 21.5 10.6 21.7 9.9C21.2 10.2 20.6 10.4 20 10.5C19.5 10.1 18.8 10 18.2 10.3C17.6 10.6 17.2 11.2 17.2 11.9C17.2 12.1 17.2 12.3 17.3 12.5C15.7 12.4 14.2 11.7 13.1 10.6C12.7 11.2 12.9 12 13.5 12.4C13.1 12.4 12.7 12.3 12.3 12.1C12.3 12.8 12.8 13.4 13.5 13.5C13.1 13.6 12.7 13.6 12.3 13.5C12.6 14.1 13.2 14.5 13.9 14.5C13.3 15 12.5 15.2 11.7 15.1C12.5 15.6 13.4 15.8 14.3 15.8C18.2 15.8 20.4 12.5 20.4 9.9C20.4 9.8 20.4 9.7 20.4 9.6C21 9.3 21.6 8.9 22 8.4Z" fill="#fff"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/layout.js"></script>
+  <script src="js/script.js?v=6"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>

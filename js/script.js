@@ -776,51 +776,72 @@ window.testPokazMenu = function(kategoria) {
 
 // Dropdown menu functionality
 function initDropdownMenu() {
-  const dropdown = document.querySelector('.dropdown');
-  const dropdownToggle = document.querySelector('.dropdown-toggle');
-  const dropdownMenu = document.querySelector('.dropdown-menu');
-  
-  console.log('Dropdown elements found:', {
-    dropdown: !!dropdown,
-    dropdownToggle: !!dropdownToggle,
-    dropdownMenu: !!dropdownMenu
-  });
-  
-  if (!dropdown || !dropdownToggle || !dropdownMenu) {
+  const dropdown = document.querySelector('[data-dropdown]');
+  if (!dropdown) {
     console.log('Dropdown elements not found');
     return;
   }
-  
-  // Add click event to toggle dropdown
+
+  const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+  const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+
+  if (!dropdownToggle || !dropdownMenu) {
+    console.log('Dropdown elements not found');
+    return;
+  }
+
+  const setExpanded = (state) => {
+    dropdown.classList.toggle('active', state);
+    dropdownToggle.setAttribute('aria-expanded', String(state));
+  };
+
+  const toggleDropdown = () => {
+    setExpanded(!dropdown.classList.contains('active'));
+  };
+
+  const closeDropdown = () => setExpanded(false);
+
   dropdownToggle.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    dropdown.classList.toggle('active');
+    toggleDropdown();
   });
-  
-  // Close dropdown when clicking outside
+
+  dropdownToggle.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleDropdown();
+    } else if (e.key === 'Escape') {
+      closeDropdown();
+      dropdownToggle.blur();
+    }
+  });
+
   document.addEventListener('click', function(e) {
     if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('active');
+      closeDropdown();
     }
   });
-  
-  // Close dropdown when pressing Escape
+
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      dropdown.classList.remove('active');
+      closeDropdown();
     }
   });
-  
-  // Handle dropdown menu item clicks
+
+  dropdown.addEventListener('focusout', function(e) {
+    if (!dropdown.contains(e.relatedTarget)) {
+      closeDropdown();
+    }
+  });
+
   const dropdownLinks = dropdownMenu.querySelectorAll('a');
   dropdownLinks.forEach(link => {
     link.addEventListener('click', function() {
-      // Let the link navigate normally
-      dropdown.classList.remove('active');
+      closeDropdown();
     });
   });
-  
+
   console.log('Dropdown menu initialized');
 }
 

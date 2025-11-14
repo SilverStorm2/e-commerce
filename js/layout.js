@@ -8,15 +8,35 @@
     { href: 'stylowa-przygoda.html', label: 'Stylowa Przygoda' }
   ];
 
+  const normalisePath = () => window.location.pathname.replace(/\\/g, '/');
+
   const isHomePage = () => {
-    const path = window.location.pathname.replace(/\\/g, '/');
+    const path = normalisePath();
     return path.endsWith('/') || path.endsWith('index.html') || !path.includes('.');
   };
 
   const buildAnchor = (hash) => (isHomePage() ? hash : `index.html${hash}`);
 
-  const isCurrentPage = (slug) =>
-    window.location.pathname.replace(/\\/g, '/').includes(slug);
+  const isCurrentPage = (href) => {
+    const path = normalisePath();
+    if (!href) {
+      return false;
+    }
+    return path.endsWith(`/${href}`);
+  };
+
+  const composeAttrs = (isActive, baseClass = '') => {
+    const classes = [];
+    if (baseClass) {
+      classes.push(baseClass);
+    }
+    if (isActive) {
+      classes.push('active');
+    }
+    const classAttr = classes.length ? ` class="${classes.join(' ')}"` : '';
+    const ariaAttr = isActive ? ' aria-current="page"' : '';
+    return `${classAttr}${ariaAttr}`;
+  };
 
   const Navbar = () => {
     const header = document.querySelector('.top-bar');
@@ -37,31 +57,29 @@
       return header;
     }
 
-    const ofertaLinks = OFFER_LINKS.map((item) => {
-      const active = isCurrentPage(item.href.replace('.html', ''))
-        ? 'class="active"'
-        : '';
-      return `<a href="${item.href}" ${active}>${item.label}</a>`;
-    }).join('');
+    nav.setAttribute('role', 'navigation');
+    nav.setAttribute('aria-label', 'Główna nawigacja');
+
+    const ofertaLinks = OFFER_LINKS.map(
+      (item) =>
+        `<a href="${item.href}"${composeAttrs(isCurrentPage(item.href))}>${item.label}</a>`
+    ).join('');
 
     const homeTarget = isHomePage() ? '#home' : 'index.html#home';
     const ofertaTarget = buildAnchor('#oferta');
 
-    const favoritesActive = isCurrentPage('ulubione') ? 'active' : '';
-    const adminActive = isCurrentPage('admin') ? 'active' : '';
-
     nav.innerHTML = `
-      <a href="${homeTarget}" class="${isHomePage() ? 'active' : ''}">Home</a>
-      <div class="dropdown">
-        <a href="${ofertaTarget}" class="dropdown-toggle">Oferta</a>
+      <a href="${homeTarget}"${composeAttrs(isHomePage())}>Home</a>
+      <div class="dropdown" data-dropdown>
+        <a href="${ofertaTarget}" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Oferta</a>
         <div class="dropdown-menu">
           ${ofertaLinks}
         </div>
       </div>
-      <a href="ulubione.html" class="${favoritesActive}">Ulubione</a>
-      <a href="${buildAnchor('#jak-to-dziala')}">Jak to działa</a>
+      <a href="ulubione.html"${composeAttrs(isCurrentPage('ulubione.html'))}>Ulubione</a>
+      <a href="${buildAnchor('#jak-to-dziala')}">Jak to dzia�'a</a>
       <a href="${buildAnchor('#kontakt')}">Kontakt</a>
-      <a href="admin.html" class="admin-link ${adminActive}">Admin</a>
+      <a href="admin.html"${composeAttrs(isCurrentPage('admin.html'), 'admin-link')}>Admin</a>
     `;
 
     nav.dataset.rendered = 'true';
