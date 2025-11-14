@@ -12,6 +12,17 @@ body {
   padding: 0 20px;
 }
 
+.page-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .top-bar {
   background-color: #1a2236;
   color: #fff;
