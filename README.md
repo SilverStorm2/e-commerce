@@ -56,6 +56,14 @@ To run the project locally and work on it, follow these steps:
     ```
 5.  **Open HTML Files:** Open `index.html` or `moda.html` in your browser.
 
+## Deploying to Vercel
+
+The repository includes a `vercel.json` configuration that instructs Vercel to run `npm run build` and publish the contents of the generated `dist/` directory as a static site. To deploy:
+
+1. Install dependencies with `npm install`.
+2. Run `npm run build` to compile SASS, autoprefix CSS, run linters, and prepare `dist/`.
+3. Connect the repository to Vercel (or use the Vercel CLI) and trigger a deployment. No additional build settings have to be configured because Vercel automatically picks up `vercel.json`.
+
 ---
 
 # Project Template
