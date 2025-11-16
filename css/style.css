@@ -12,16 +12,6 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
-.page-container {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
 
 .page-container {
   max-width: 1200px;

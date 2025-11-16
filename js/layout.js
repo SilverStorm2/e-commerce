@@ -11,8 +11,13 @@
   const normalisePath = () => window.location.pathname.replace(/\\/g, '/');
 
   const isHomePage = () => {
-    const path = normalisePath();
-    return path.endsWith('/') || path.endsWith('index.html') || !path.includes('.');
+    const path = normalisePath().replace(/\/+$/, '');
+    return (
+      path === '' ||
+      path === '/' ||
+      path.endsWith('/index') ||
+      path.endsWith('/index.html')
+    );
   };
 
   const buildAnchor = (hash) => (isHomePage() ? hash : `index.html${hash}`);
