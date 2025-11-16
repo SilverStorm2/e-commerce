@@ -426,6 +426,8 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 8px;
     justify-items: stretch;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
   .main-nav a {
     margin: 0;
@@ -442,6 +444,8 @@ body {
   .ulubione-icon,
   .koszyk-icon {
     align-self: center;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
   .dropdown-toggle {
     display: block;
