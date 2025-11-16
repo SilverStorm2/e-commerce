@@ -82,7 +82,7 @@
         </div>
       </div>
       <a href="ulubione.html"${composeAttrs(isCurrentPage('ulubione.html'))}>Ulubione</a>
-      <a href="${buildAnchor('#jak-to-dziala')}">Jak to dzia�'a</a>
+      <a href="${buildAnchor('#jak-to-dziala')}">Jak to działa</a>
       <a href="${buildAnchor('#kontakt')}">Kontakt</a>
       <a href="admin.html"${composeAttrs(isCurrentPage('admin.html'), 'admin-link')}>Admin</a>
     `;
