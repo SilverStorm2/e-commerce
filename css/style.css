@@ -34,6 +34,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .shop-name {
@@ -318,10 +320,16 @@ body {
   background-color: #1a2236;
   color: #fff;
   padding: 20px 0;
-  text-align: center;
+}
+
+.bottom-bar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .social-icons a {
