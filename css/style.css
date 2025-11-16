@@ -1,4 +1,10 @@
 @charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Arial", sans-serif;
   margin: 0;
@@ -22,20 +28,33 @@ body {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  box-sizing: border-box;
 }
 
 .top-bar {
-  background-color: #1a2236;
+  background-color: transparent;
   color: #fff;
   padding: 15px 0;
 }
 
 .top-bar .container {
+  background-color: #1a2236;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 16px;
+  padding: 15px 20px;
+  color: #fff;
+}
+
+.top-bar > .container,
+.bottom-bar > .container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .shop-name {
@@ -317,12 +336,13 @@ body {
 }
 
 .bottom-bar {
-  background-color: #1a2236;
+  background-color: transparent;
   color: #fff;
   padding: 20px 0;
 }
 
 .bottom-bar .container {
+  background-color: #1a2236;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -330,6 +350,9 @@ body {
   gap: 12px;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
 }
 
 .social-icons a {
