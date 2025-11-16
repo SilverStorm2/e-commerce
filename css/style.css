@@ -400,14 +400,46 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .top-bar {
-    flex-direction: column;
     padding: 10px 0;
   }
+  .top-bar .container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
   .main-nav {
-    margin-top: 10px;
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 8px;
+  }
+  .main-nav > a,
+  .main-nav .dropdown {
+    flex: 1 1 calc(50% - 8px);
   }
   .main-nav a {
-    margin: 0 10px;
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+    margin-top: 4px;
+  }
+  .dropdown.active .dropdown-menu {
+    display: block;
   }
   .hero-content h2 {
     font-size: 36px;
@@ -423,6 +455,16 @@ body {
   .contact-section {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-nav > a,
+  .main-nav .dropdown {
+    flex: 1 1 100%;
+  }
+  .main-nav a {
+    font-size: 13px;
   }
 }
 /* Ulubione styles */
